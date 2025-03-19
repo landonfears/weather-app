@@ -80,8 +80,8 @@ export const AutoComplete = ({
 
   const handleBlur = useCallback(() => {
     setOpen(false);
-    setInputValue(selected?.label);
-  }, [selected]);
+    setInputValue(selected?.label || inputValue);
+  }, [selected, inputValue]);
 
   const handleSelectOption = useCallback(
     (selectedOption: Option) => {
