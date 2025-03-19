@@ -2,14 +2,11 @@
 
 import type { OutdoorEvent, OutdoorLocation } from "~/server/types";
 import OptionsPanel from "./options-panel";
-import {
-  BLANK_OUTDOOR_EVENT,
-  DEFAULT_OUTDOOR_EVENT,
-  LOCAL_STORAGE_KEY,
-} from "~/constants";
+import { BLANK_OUTDOOR_EVENT, DEFAULT_OUTDOOR_EVENT } from "~/constants";
 import { useEffect, useState } from "react";
 import {
   createOutdoorEventLocationStore,
+  getAllOutdoorEventLocationStore,
   getOutdoorEventLocationStore,
 } from "~/persister/events";
 import { handleNewOrUpdatedOutdoorEventStore } from "~/lib/utils";
@@ -19,39 +16,41 @@ export default function Weather() {
     useState<OutdoorEvent>(BLANK_OUTDOOR_EVENT);
 
   useEffect(() => {
-    const eventId = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (!eventId) {
-      createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
-        .then((outdoorEventLocation) =>
-          handleNewOrUpdatedOutdoorEventStore(
-            outdoorEventLocation?.[0]!.data,
-            setOutdoorEvent,
-            outdoorEventLocation?.[0]!.id,
-          ),
-        )
-        .catch(console.error);
-    } else {
-      getOutdoorEventLocationStore(eventId)
-        .then((event) => {
-          if (event.length === 0) {
-            createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
-              .then((outdoorEventLocation) =>
-                handleNewOrUpdatedOutdoorEventStore(
-                  outdoorEventLocation?.[0]!.data,
-                  setOutdoorEvent,
-                  outdoorEventLocation?.[0]!.id,
-                ),
-              )
-              .catch(console.error);
-          } else {
-            setOutdoorEvent((prevOutdoorEvent) => ({
-              ...prevOutdoorEvent,
-              location: event[0]!.data as OutdoorLocation,
-            }));
-          }
-        })
-        .catch(console.error);
-    }
+    getAllOutdoorEventLocationStore().then((events) => {
+      const eventId = events?.[0]?.id;
+      if (!eventId) {
+        createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
+          .then((outdoorEventLocation) =>
+            handleNewOrUpdatedOutdoorEventStore(
+              outdoorEventLocation?.[0]!.data,
+              setOutdoorEvent,
+              outdoorEventLocation?.[0]!.id,
+            ),
+          )
+          .catch(console.error);
+      } else {
+        getOutdoorEventLocationStore(eventId)
+          .then((event) => {
+            if (event.length === 0) {
+              createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
+                .then((outdoorEventLocation) =>
+                  handleNewOrUpdatedOutdoorEventStore(
+                    outdoorEventLocation?.[0]!.data,
+                    setOutdoorEvent,
+                    outdoorEventLocation?.[0]!.id,
+                  ),
+                )
+                .catch(console.error);
+            } else {
+              setOutdoorEvent((prevOutdoorEvent) => ({
+                ...prevOutdoorEvent,
+                location: event[0]!.data as OutdoorLocation,
+              }));
+            }
+          })
+          .catch(console.error);
+      }
+    });
   }, []);
 
   return (

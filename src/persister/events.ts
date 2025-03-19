@@ -35,8 +35,12 @@ const createOutdoorEventLocationStore = async (event: OutdoorLocation) => {
   ];
 };
 
-const getOutdoorEventLocationStore = async (id: string) => {
-  return db.outdoorEventLocations.where("id").equals(parseInt(id)).toArray();
+const getAllOutdoorEventLocationStore = async () => {
+  return db.outdoorEventLocations.toArray();
+};
+
+const getOutdoorEventLocationStore = async (id: number) => {
+  return db.outdoorEventLocations.where("id").equals(id).toArray();
 };
 
 const updateOutdoorEventLocationStore = async (
@@ -56,4 +60,5 @@ export {
   createOutdoorEventLocationStore,
   getOutdoorEventLocationStore,
   updateOutdoorEventLocationStore,
+  getAllOutdoorEventLocationStore,
 };

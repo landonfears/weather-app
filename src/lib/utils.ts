@@ -1,7 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { Dispatch, SetStateAction } from "react";
 import { twMerge } from "tailwind-merge";
-import { LOCAL_STORAGE_KEY } from "~/constants";
 import { Result } from "~/server/open-cage";
 import { OutdoorEvent, OutdoorLocation } from "~/server/types";
 
@@ -75,5 +74,4 @@ export const handleNewOrUpdatedOutdoorEventStore = (
     ...prevOutdoorEvent,
     location: outdoorEventLocation,
   }));
-  localStorage.setItem(LOCAL_STORAGE_KEY, eventId.toString() ?? "");
 };
