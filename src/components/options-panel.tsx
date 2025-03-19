@@ -1,7 +1,7 @@
 "use client";
 
 import { DropdownMenu } from "./dropdown-menu";
-import { DAYS_OF_WEEK, TIMES_OF_DAY } from "~/constants";
+import { DAYS_OF_WEEK, LOCAL_STORAGE_KEY, TIMES_OF_DAY } from "~/constants";
 import { LocationSearch } from "./location-search";
 import type {
   DayOfWeek,
@@ -9,21 +9,35 @@ import type {
   OutdoorLocation,
   TimeOfDay,
 } from "~/server/types";
+import { updateOutdoorEventLocationStore } from "~/persister/events";
+import { handleNewOrUpdatedOutdoorEventStore } from "~/lib/utils";
+import { Dispatch, SetStateAction } from "react";
 
 export default function OptionsPanel({
   outdoorEvent,
   setOutdoorEvent,
 }: {
   outdoorEvent: OutdoorEvent;
-  setOutdoorEvent: (outdoorEvent: OutdoorEvent) => void;
+  setOutdoorEvent: Dispatch<SetStateAction<OutdoorEvent>>;
 }) {
   return (
     <div className="static flex w-full flex-col items-center justify-center space-y-4 md:relative md:w-full md:flex-row md:space-x-4 md:space-y-0">
       <LocationSearch
         currentLocation={outdoorEvent?.location}
-        onSelect={(value: OutdoorLocation) =>
-          setOutdoorEvent({ ...outdoorEvent, location: value })
-        }
+        onSelect={(value: OutdoorLocation) => {
+          const eventId = parseInt(
+            localStorage?.getItem(LOCAL_STORAGE_KEY) as string,
+          );
+          if (eventId) {
+            updateOutdoorEventLocationStore(eventId, value).then(() => {
+              handleNewOrUpdatedOutdoorEventStore(
+                value,
+                setOutdoorEvent,
+                eventId,
+              );
+            });
+          }
+        }}
       />
       <div className="flex w-full items-start justify-between space-x-4">
         <DropdownMenu

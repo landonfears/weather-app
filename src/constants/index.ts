@@ -1,7 +1,9 @@
 import type { DayOfWeek, OutdoorEvent, TimeOfDay } from "~/server/types";
 
 export const IDB_KEY = "weather";
-export const LOCAL_STORAGE_KEY = "weather";
+export const IDB_EVENTS_DB_NAME = "OutdoorEventsDatabase";
+export const LOCAL_STORAGE_KEY = "weather-event-id";
+
 export const DAYS_OF_WEEK: DayOfWeek[] = [
   "Sunday",
   "Monday",

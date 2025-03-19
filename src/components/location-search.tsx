@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import type { OpenCageResponse } from "~/server/open-cage";
@@ -15,6 +15,10 @@ export function LocationSearch({
   onSelect: (value: OutdoorLocation) => void;
 }) {
   const [search, setSearch] = useState<string>(formatLocation(currentLocation));
+
+  useEffect(() => {
+    setSearch(formatLocation(currentLocation));
+  }, [currentLocation]);
 
   const readySearch = useDebounce(search ?? "", 500);
   const { data, isFetching } = useQuery({
