@@ -1,5 +1,3 @@
-import { env } from "~/env";
-
 export interface OpenCageResponse {
   documentation: string;
   licenses: License[];
@@ -23,10 +21,10 @@ interface Rate {
   reset: number;
 }
 
-interface Result {
+export interface Result {
   annotations: Annotations;
   bounds: Bounds;
-  components: Components;
+  components: LocationComponents;
   confidence: number;
   formatted: string;
   geometry: Geometry;
@@ -141,7 +139,7 @@ interface Coordinate {
   lng: number;
 }
 
-interface Components {
+export interface LocationComponents {
   "ISO_3166-1_alpha-2": string;
   "ISO_3166-1_alpha-3": string;
   "ISO_3166-2": string[];
@@ -187,17 +185,4 @@ interface StayInformed {
 interface Timestamp {
   created_http: string;
   created_unix: number;
-}
-
-export async function getValidLocations(query: string) {
-  const response = await fetch(
-    `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(query)}&key=${env.OPEN_CAGE_API_KEY}`,
-    {
-      method: "GET",
-      redirect: "follow",
-    },
-  );
-  const geocode = (await response.json()) as OpenCageResponse;
-  console.log("geocode", geocode);
-  return geocode;
 }

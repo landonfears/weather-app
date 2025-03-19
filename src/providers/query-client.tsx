@@ -1,6 +1,6 @@
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import { createIDBPersister } from "~/persister/indexed-db";
 
 const queryClient = new QueryClient({

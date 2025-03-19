@@ -1,12 +1,12 @@
 "use client";
 
-import Example from "~/components/f";
+import Weather from "~/components/weather";
 import WeatherQueryClientProvider from "~/providers/query-client";
 
 export default function HomePage() {
   return (
     <WeatherQueryClientProvider>
-      <Example />
+      <Weather />
     </WeatherQueryClientProvider>
   );
 }
