@@ -8,6 +8,8 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
+    VISUAL_CROSSING_API_KEY: z.string(),
+    OPEN_CAGE_API_KEY: z.string(),
   },
 
   /**
@@ -25,6 +27,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    VISUAL_CROSSING_API_KEY: process.env.VISUAL_CROSSING_API_KEY,
+    OPEN_CAGE_API_KEY: process.env.OPEN_CAGE_API_KEY,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
