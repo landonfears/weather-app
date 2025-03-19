@@ -2,24 +2,26 @@
 
 import type { OutdoorEvent, OutdoorLocation } from "~/server/types";
 import OptionsPanel from "./options-panel";
-import { DEFAULT_OUTDOOR_EVENT, LOCAL_STORAGE_KEY } from "~/constants";
+import {
+  BLANK_OUTDOOR_EVENT,
+  DEFAULT_OUTDOOR_EVENT,
+  LOCAL_STORAGE_KEY,
+} from "~/constants";
 import { useEffect, useState } from "react";
 import {
   createOutdoorEventLocationStore,
   getOutdoorEventLocationStore,
-  OutdoorEventLocationStore,
 } from "~/persister/events";
 import { handleNewOrUpdatedOutdoorEventStore } from "~/lib/utils";
 
 export default function Weather() {
-  const [outdoorEvent, setOutdoorEvent] = useState<OutdoorEvent>(
-    DEFAULT_OUTDOOR_EVENT,
-  );
+  const [outdoorEvent, setOutdoorEvent] =
+    useState<OutdoorEvent>(BLANK_OUTDOOR_EVENT);
 
   useEffect(() => {
     const eventId = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (!eventId) {
-      createOutdoorEventLocationStore(outdoorEvent.location)
+      createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
         .then((outdoorEventLocation) =>
           handleNewOrUpdatedOutdoorEventStore(
             outdoorEventLocation?.[0]!.data,
@@ -32,7 +34,7 @@ export default function Weather() {
       getOutdoorEventLocationStore(eventId)
         .then((event) => {
           if (event.length === 0) {
-            createOutdoorEventLocationStore(outdoorEvent.location)
+            createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
               .then((outdoorEventLocation) =>
                 handleNewOrUpdatedOutdoorEventStore(
                   outdoorEventLocation?.[0]!.data,

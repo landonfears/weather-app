@@ -33,6 +33,33 @@ export const TIMES_OF_DAY: { name: TimeOfDay; hourRange: [number, number] }[] =
     },
   ];
 
+export const BLANK_OUTDOOR_EVENT: OutdoorEvent = {
+  location: {
+    components: {
+      "ISO_3166-1_alpha-2": "",
+      "ISO_3166-1_alpha-3": "",
+      "ISO_3166-2": [""],
+      _category: "",
+      _normalized_city: "",
+      _type: "",
+      borough: "",
+      city: "",
+      continent: "",
+      country: "",
+      country_code: "",
+      county: "",
+      neighbourhood: "",
+      park: "",
+      state: "",
+      state_code: "",
+    },
+    formatted: "",
+    search: "",
+  },
+  dayOfWeek: "Sunday",
+  timeOfDay: "Morning",
+};
+
 export const DEFAULT_OUTDOOR_EVENT: OutdoorEvent = {
   location: {
     components: {
