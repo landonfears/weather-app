@@ -50,7 +50,7 @@ export default function OptionsPanel({
       <div className="flex w-full items-start justify-between space-x-4">
         <DropdownMenu
           items={DAYS_OF_WEEK}
-          placeholder="Select a day"
+          placeholder=""
           value={outdoorEvent?.dayOfWeek}
           onSelect={(value: string) => {
             getAllOutdoorEventLocationStore().then((events) => {
@@ -77,7 +77,7 @@ export default function OptionsPanel({
         />
         <DropdownMenu
           items={TIMES_OF_DAY.map((tod) => tod.name)}
-          placeholder="Select time of day"
+          placeholder=""
           value={outdoorEvent?.timeOfDay}
           onSelect={(value: string) => {
             getAllOutdoorEventLocationStore().then((events) => {

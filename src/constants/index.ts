@@ -56,8 +56,8 @@ export const BLANK_OUTDOOR_EVENT: OutdoorEvent = {
     search: "",
     timezone: "",
   },
-  dayOfWeek: "Sunday",
-  timeOfDay: "Morning",
+  dayOfWeek: "" as DayOfWeek,
+  timeOfDay: "" as TimeOfDay,
 };
 
 export const DEFAULT_OUTDOOR_EVENT: OutdoorEvent = {
