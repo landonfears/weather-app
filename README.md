@@ -3,7 +3,7 @@
 ## To do
 
 - [ ] Test weather API
-- [ ] Create data model
-- [ ] Add event
+- [x] Create data model
+- [x] Add event
 - [ ] Display event weather data
-- [ ] Update event
+- [x] Update event

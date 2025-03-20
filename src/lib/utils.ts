@@ -2,7 +2,13 @@ import { clsx, type ClassValue } from "clsx";
 import { Dispatch, SetStateAction } from "react";
 import { twMerge } from "tailwind-merge";
 import { Result } from "~/server/open-cage";
-import { OutdoorEvent, OutdoorLocation } from "~/server/types";
+import {
+  DayOfWeek,
+  OutdoorEvent,
+  OutdoorLocation,
+  TimeOfDay,
+} from "~/server/types";
+import { DAYS_OF_WEEK, TIMES_OF_DAY } from "~/constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,39 +25,7 @@ export function formatDateToISOString(date: Date): string {
 }
 
 export function formatLocation(location: OutdoorLocation): string {
-  let parts = [];
   return location.formatted;
-  // parts.push(location.components.park ?? location.components.neighbourhood);
-  // parts = parts.filter((part) => part);
-  // if (parts.length) {
-  //   parts.push(location.components.city ?? location.components.state);
-  //   return parts.join(", ");
-  // }
-  // parts.push(
-  //   location.components.suburb ??
-  //     location.components.hamlet ??
-  //     location.components.quarter ??
-  //     location.components.town ??
-  //     location.components.borough,
-  // );
-  // parts = parts.filter((part) => part);
-  // if (parts.length) {
-  //   parts.push(location.components.city ?? location.components.state);
-  //   return parts.join(", ");
-  // }
-  // parts.push(location.components.city ?? location.components.county);
-  // parts = parts.filter((part) => part);
-  // if (parts.length) {
-  //   parts.push(location.components.state);
-  //   return parts.join(", ");
-  // }
-  // parts.push(
-  //   location.components.state ??
-  //     location.components.country ??
-  //     location.components.continent,
-  // );
-  // parts = parts.filter((part) => part);
-  // return parts.join(", ");
 }
 
 export const resultToOutdoorLocation = (
@@ -75,3 +49,66 @@ export const handleNewOrUpdatedOutdoorEventStore = (
     location: outdoorEventLocation,
   }));
 };
+
+export function getNextDayOfWeek(
+  dayOfWeek: DayOfWeek,
+  timeOfDay: TimeOfDay,
+  offset: number = 0,
+  timeZone: string = "America/New_York",
+): Date[] {
+  const now = new Date();
+  const dayIndex = DAYS_OF_WEEK.indexOf(dayOfWeek);
+  const timeRange = TIMES_OF_DAY.find(
+    (time) => time.name === timeOfDay,
+  )?.hourRange;
+
+  if (!timeRange) {
+    throw new Error("Invalid time of day");
+  }
+
+  // Calculate the next occurrence of the specified day of the week
+  const resultDates: Date[] = [];
+  const currentDayIndex = now.getDay();
+  let daysUntilNext = dayIndex - currentDayIndex;
+  if (daysUntilNext < 0) {
+    daysUntilNext += 7;
+  }
+
+  // Get the next occurrence of the specified day
+  const nextDay = new Date(now);
+  nextDay.setDate(now.getDate() + daysUntilNext + offset * 7);
+
+  // Generate dates for the specified time range
+  for (let hour = timeRange[0]; hour < timeRange[1]; hour++) {
+    const date = new Date(nextDay);
+    date.setHours(hour, 0, 0, 0);
+
+    // Convert to the specified time zone
+    const options: Intl.DateTimeFormatOptions = {
+      timeZone,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    };
+    const timeString = date.toLocaleTimeString("en-US", options);
+    const [hours, minutes, seconds] = timeString.split(":").map(Number);
+    date.setHours(hours!, minutes, seconds);
+
+    resultDates.push(date);
+  }
+
+  return resultDates;
+}
+
+export function formatDatetimeEpoch(datetimeEpoch: number): string {
+  const date = new Date(datetimeEpoch * 1000); // Convert from seconds to milliseconds
+  const options: Intl.DateTimeFormatOptions = {
+    timeZone: "America/New_York",
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return date.toLocaleDateString("en-US", options);
+}

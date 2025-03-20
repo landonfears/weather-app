@@ -1,68 +1,94 @@
 "use client";
 
-import type { OutdoorEvent, OutdoorLocation } from "~/server/types";
-import OptionsPanel from "./options-panel";
-import { BLANK_OUTDOOR_EVENT, DEFAULT_OUTDOOR_EVENT } from "~/constants";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Dispatch, SetStateAction, useState } from "react";
 import {
-  createOutdoorEventLocationStore,
-  getAllOutdoorEventLocationStore,
-  getOutdoorEventLocationStore,
-} from "~/persister/events";
-import { handleNewOrUpdatedOutdoorEventStore } from "~/lib/utils";
+  formatDatetimeEpoch,
+  formatDateToISOString,
+  getNextDayOfWeek,
+} from "~/lib/utils";
+import { OutdoorEvent } from "~/server/types";
+import SvgIcon from "./svg/icon";
+import { Skeleton } from "./ui/skeleton";
+import { Umbrella, Wind } from "lucide-react";
+// import ClearNight from "~/icons/3/clear-night.svg";
+// import ClearDay from "~/icons/1/clear-day.svg";
 
-export default function Weather() {
-  const [outdoorEvent, setOutdoorEvent] =
-    useState<OutdoorEvent>(BLANK_OUTDOOR_EVENT);
+export default function Weather({
+  outdoorEvent,
+  setOutdoorEvent,
+}: {
+  outdoorEvent: OutdoorEvent;
+  setOutdoorEvent: Dispatch<SetStateAction<OutdoorEvent>>;
+}) {
+  const [offsetWeek, setOffsetWeek] = useState(0);
+  const { data, isFetching } = useQuery({
+    queryKey: [
+      "weather",
+      outdoorEvent.location.formatted,
+      outdoorEvent.dayOfWeek,
+      outdoorEvent.timeOfDay,
+      offsetWeek,
+    ],
+    queryFn: async () => {
+      const queryDates = getNextDayOfWeek(
+        outdoorEvent.dayOfWeek,
+        outdoorEvent.timeOfDay,
+        offsetWeek,
+      ).map((d) => formatDateToISOString(d));
 
-  useEffect(() => {
-    getAllOutdoorEventLocationStore().then((events) => {
-      const eventId = events?.[0]?.id;
-      if (!eventId) {
-        createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
-          .then((outdoorEventLocation) =>
-            handleNewOrUpdatedOutdoorEventStore(
-              outdoorEventLocation?.[0]!.data,
-              setOutdoorEvent,
-              outdoorEventLocation?.[0]!.id,
-            ),
-          )
-          .catch(console.error);
-      } else {
-        getOutdoorEventLocationStore(eventId)
-          .then((event) => {
-            if (event.length === 0) {
-              createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
-                .then((outdoorEventLocation) =>
-                  handleNewOrUpdatedOutdoorEventStore(
-                    outdoorEventLocation?.[0]!.data,
-                    setOutdoorEvent,
-                    outdoorEventLocation?.[0]!.id,
-                  ),
-                )
-                .catch(console.error);
-            } else {
-              setOutdoorEvent((prevOutdoorEvent) => ({
-                ...prevOutdoorEvent,
-                location: event[0]!.data as OutdoorLocation,
-              }));
-            }
-          })
-          .catch(console.error);
-      }
-    });
-  }, []);
+      const weatherData = await Promise.all(
+        queryDates.map(async (date) => {
+          const response = await fetch(
+            `/api/weather?query=${encodeURIComponent(
+              outdoorEvent.location.formatted,
+            )}&time=${encodeURIComponent(date)}`,
+          );
+          return response.json();
+        }),
+      );
 
+      return weatherData;
+    },
+    enabled:
+      !!outdoorEvent.location.formatted &&
+      !!outdoorEvent.dayOfWeek &&
+      !!outdoorEvent.timeOfDay,
+  });
+
+  if (isFetching || !data) {
+    return <Skeleton className="h-8 w-full" />;
+  }
+
+  const conditions = data?.[0]?.currentConditions;
   return (
-    <main className="flex flex-col items-center justify-start px-8 py-10">
-      <h1 className="mb-4 text-2xl">
-        <span className="font-thin text-green-600">weather</span>
-        <span className="font-black text-green-600">events</span>
-      </h1>
-      <OptionsPanel
-        outdoorEvent={outdoorEvent}
-        setOutdoorEvent={setOutdoorEvent}
-      />
-    </main>
+    <div className="my-4 flex w-full flex-col items-center justify-center gap-4 md:w-1/2">
+      <h2 className="rounded-md px-4 py-2 text-center text-2xl">
+        {formatDatetimeEpoch(conditions.datetimeEpoch)}
+      </h2>
+      <div className="flex items-start justify-center gap-4">
+        <SvgIcon
+          icon={conditions?.icon}
+          className="h-auto w-16 w-full md:w-20 lg:w-24"
+        />
+        <div className="flex flex-col gap-2">
+          <p className="text-2xl">
+            {conditions.conditions} {Math.round(conditions.temp)}&deg;
+          </p>
+          <div className="flex items-center gap-2">
+            <Wind className="h-8 w-8" />
+            <span className="text-xl">
+              {Math.round(conditions.windspeed)} mph
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Umbrella className="h-8 w-8" />
+            <span className="text-xl">
+              {conditions.precipprob}% chance of rain
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

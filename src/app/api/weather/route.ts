@@ -7,8 +7,10 @@ export async function GET(req: NextRequest) {
   try {
     const url = new URL(req.url);
     const query = url.searchParams.get("query") ?? "";
-    const time =
-      url.searchParams.get("time") ?? formatDateToISOString(new Date());
+    const time = url.searchParams.get("time");
+    if (!time) {
+      throw new Error("Time is required");
+    }
 
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}/${time}?unitGroup=us&key=${env.VISUAL_CROSSING_API_KEY}&include=current&contentType=json`,
@@ -21,6 +23,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(weather);
   } catch (cause) {
     console.error(cause);
+    if (cause instanceof Error) {
+      return NextResponse.json({ error: cause.message }, { status: 500 });
+    }
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
