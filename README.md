@@ -8,6 +8,6 @@
 - [x] Update event
 - [x] Display basic event weather data
 - [x] Display chart weather data
-- [ ] Add carousel
+- [x] Add carousel
 - [ ] Update cancel event
 - [ ] Tests

@@ -159,26 +159,32 @@ export default function Chart({
     return null;
   }
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex w-full flex-col gap-1">
       <div className="flex items-center justify-between gap-1">
         {/* Chart tooltip */}
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="link"
-                className="flex w-fit items-center justify-start gap-1 pl-0 text-base font-bold"
-              >
-                <CircleHelp className="h-4 w-4" />
-                <span>{chart?.name}</span>
-                <span>({chart?.unit})</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{chart?.description}</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <div className="hidden md:block">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="link"
+                  className="flex w-fit items-center justify-start gap-1 pl-0 text-sm font-bold"
+                >
+                  <CircleHelp className="h-4 w-4" />
+                  <span>{chart?.name}</span>
+                  <span>({chart?.unit})</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{chart?.description}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+        <div className="flex w-fit items-center justify-start gap-1 pl-0 text-sm font-bold md:hidden">
+          <span>{chart?.name}</span>
+          <span>({chart?.unit})</span>
+        </div>
         {/* Chart switcher */}
         <Select
           value={chart?.key}
@@ -208,7 +214,7 @@ export default function Chart({
       </div>
 
       <Line options={options} data={chartData} />
-      <span className="text-center text-xs lg:hidden">
+      <span className="text-center text-xs md:hidden">
         {chart?.description}
       </span>
     </div>

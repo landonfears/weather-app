@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { env } from "~/env";
-import { formatDateToISOString } from "~/lib/utils";
+import { VisualCrossingResponse } from "~/server/visual-crossing";
 
 export async function GET(req: NextRequest) {
   try {
@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
         redirect: "follow",
       },
     );
-    const weather = (await response.json()) as unknown;
+    const weather = (await response.json()) as VisualCrossingResponse;
     return NextResponse.json(weather);
   } catch (cause) {
     console.error(cause);
