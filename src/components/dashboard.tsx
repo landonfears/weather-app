@@ -52,7 +52,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center justify-start px-8 py-10">
+    <main className="flex flex-col items-center justify-start px-8 py-4 md:py-10">
       <h1 className="mb-4 text-2xl">
         <span className="font-thin text-blue-600">weather</span>
         <span className="font-black text-blue-600">events</span>

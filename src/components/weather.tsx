@@ -1,12 +1,7 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { Dispatch, SetStateAction, useState } from "react";
-import {
-  formatDatetimeEpoch,
-  formatDateToISOString,
-  getNextDayOfWeek,
-} from "~/lib/utils";
+import { Dispatch, SetStateAction } from "react";
+import { findParentWithId } from "~/lib/utils";
 import { OutdoorEvent } from "~/server/types";
 import SvgIcon from "./svg/icon";
 import { Skeleton } from "./ui/skeleton";
@@ -32,11 +27,18 @@ export default function Weather({
   const weeks = Array.from({ length: 53 }, (_, i) => i - 51);
 
   return (
-    <div className="my-4 flex w-full flex-col items-center justify-center gap-4">
+    <div className="my-0 flex w-full flex-col items-center justify-center gap-4 md:my-4">
       <Carousel
         className="w-full"
         opts={{
           startIndex: weeks.length - 2,
+          watchDrag: (_, event) => {
+            if (findParentWithId(event.target as HTMLElement, "hour-scroll")) {
+              return false;
+            }
+
+            return true;
+          },
         }}
       >
         <CarouselContent className="md:mx-10">

@@ -126,3 +126,16 @@ export function datetimeEpochToHour(
   };
   return date.toLocaleTimeString("en-US", options);
 }
+
+export function findParentWithId(element: HTMLElement, id: string): boolean {
+  let currentElement: HTMLElement | null = element;
+
+  while (currentElement) {
+    if (currentElement.id === id) {
+      return true;
+    }
+    currentElement = currentElement.parentElement;
+  }
+
+  return false;
+}

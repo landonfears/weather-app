@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Dispatch, SetStateAction, useState } from "react";
 import {
   cn,
+  datetimeEpochToHour,
   formatDatetimeEpoch,
   formatDateToISOString,
   getNextDayOfWeek,
@@ -22,6 +23,7 @@ import {
   getAllOutdoorEventLocationStore,
   updateOutdoorEventLocationStore,
 } from "~/persister/events";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 export default function WeatherData({
   outdoorEvent,
@@ -82,20 +84,7 @@ export default function WeatherData({
       >
         <Skeleton className="h-10 w-full" />
         <div className="flex w-full items-start justify-center gap-4">
-          <Skeleton className="h-16 w-16 rounded-full md:h-20 md:w-20 lg:h-24 lg:w-24" />
-          <div className="flex w-full flex-col gap-2">
-            <div className="flex w-full items-center justify-between gap-2 rounded-md py-2 text-xl">
-              <Skeleton className="h-7 w-full" />
-            </div>
-            <div className="flex items-center gap-2">
-              <Skeleton className="h-8 w-8 rounded-full" />
-              <Skeleton className="h-6 w-full" />
-            </div>
-            <div className="flex items-center gap-2">
-              <Skeleton className="h-8 w-8 rounded-full" />
-              <Skeleton className="h-6 w-full" />
-            </div>
-          </div>
+          <Skeleton className="h-[170px] w-full" />
         </div>
         <Skeleton className="h-[200px] w-full" />
       </div>
@@ -174,29 +163,40 @@ export default function WeatherData({
           {formatDatetimeEpoch(conditions.datetimeEpoch, data?.[0]?.timezone)}
         </h2>
       </div>
-      <div className="flex w-full items-start justify-center gap-4">
-        <SvgIcon icon={conditions?.icon} className="h-16 w-16 shrink" />
-        <div className="flex grow flex-col gap-2">
-          <div className="flex items-center justify-between gap-2 rounded-md bg-neutral-100 px-4 py-2 text-2xl">
-            <span className="text-base">{conditions.conditions}</span>
-            <span className="font-bold">
-              {Math.round(conditions.temp)}&deg;
-            </span>
-          </div>
-          <div className="flex items-center justify-start gap-2">
-            <Wind className="h-6 w-6" />
-            <span className="text-base">
-              {Math.round(conditions.windspeed)} mph
-            </span>
-          </div>
-          <div className="flex items-center justify-start gap-2">
-            <Umbrella className="h-6 w-6" />
-            <span className="text-base">
-              {conditions.precipprob}% chance of rain
-            </span>
-          </div>
+      <ScrollArea
+        id="hour-scroll"
+        className="w-full whitespace-nowrap rounded-md border"
+      >
+        <div className="flex w-max gap-4 space-x-4 p-4 pb-6">
+          {data
+            .map((d) => d.currentConditions)
+            .map((conditions) => (
+              <div
+                key={conditions.datetimeEpoch}
+                className="flex flex-col items-center justify-center gap-0.5"
+              >
+                <h3 className="text-sm font-bold">
+                  {datetimeEpochToHour(
+                    conditions.datetimeEpoch,
+                    data?.[0]?.timezone,
+                  )}
+                </h3>
+                <SvgIcon icon={conditions.icon} className="h-8 w-8 shrink" />
+                <span className="text-xs">{conditions.conditions}</span>
+                <span className="text-lg font-bold">
+                  {Math.round(conditions.temp)}&deg;
+                </span>
+                <div className="flex items-center justify-start gap-1">
+                  <Umbrella className="h-4 w-4" />
+                  <span className="grow text-xs">
+                    {Math.round(conditions.precipprob)}%
+                  </span>
+                </div>
+              </div>
+            ))}
         </div>
-      </div>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
       <Chart
         conditions={data.map((d) => d.currentConditions)}
         timezone={data?.[0]!.timezone}

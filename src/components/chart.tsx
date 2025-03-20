@@ -160,7 +160,7 @@ export default function Chart({
   }
   return (
     <div className="flex w-full flex-col gap-1">
-      <div className="flex items-center justify-between gap-1">
+      <div className="flex items-center justify-between gap-1 pr-0.5">
         {/* Chart tooltip */}
         <div className="hidden md:block">
           <TooltipProvider>
