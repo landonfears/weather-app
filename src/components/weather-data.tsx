@@ -111,7 +111,12 @@ export default function WeatherData({
           "flex items-center justify-center gap-1",
         )}
       >
-        <CalendarHeart className="hidden h-7 w-7 md:block" />
+        <CalendarHeart
+          className={cn(
+            offsetWeek >= 0 ? "text-blue-600" : "",
+            "hidden h-7 w-7 md:block",
+          )}
+        />
         <h2 className="rounded-md px-10 py-2 text-center text-lg md:px-4">
           {formatDatetimeEpoch(conditions.datetimeEpoch, data?.[0]?.timezone)}
         </h2>
@@ -119,11 +124,11 @@ export default function WeatherData({
       <div className="flex w-full items-start justify-center gap-4">
         <SvgIcon
           icon={conditions?.icon}
-          className="h-auto w-16 md:w-24 lg:w-32"
+          className="h-16 w-16 md:h-24 md:w-24 lg:h-32 lg:w-32"
         />
         <div className="flex grow flex-col gap-2">
-          <div className="flex items-center justify-between gap-2 rounded-md bg-neutral-100 px-4 py-2 text-xl">
-            <span className="text-lg">{conditions.conditions}</span>
+          <div className="flex items-center justify-between gap-2 rounded-md bg-neutral-100 px-4 py-2 text-2xl">
+            <span className="text-base">{conditions.conditions}</span>
             <span className="font-bold">
               {Math.round(conditions.temp)}&deg;
             </span>
