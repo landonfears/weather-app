@@ -56,7 +56,7 @@ export const AutoComplete = ({
       }
 
       // Keep the options displayed when the user is typing
-      if (!isOpen) {
+      if (!isOpen && event.key !== "Tab") {
         setOpen(true);
       }
 
@@ -130,7 +130,7 @@ export const AutoComplete = ({
             inputRef.current?.focus();
           }}
         >
-          <X className="h-4 w-4 opacity-50" onClick={() => {}} />
+          <X className="h-4 w-4 opacity-50" />
         </button>
       </div>
       <div className="relative mt-0">

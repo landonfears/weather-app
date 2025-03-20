@@ -5,7 +5,6 @@ import { OutdoorEvent, OutdoorLocation } from "~/server/types";
 interface OutdoorEventLocationStore {
   id: number;
   data: OutdoorEvent;
-  cancels: Date[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -16,13 +15,12 @@ const db = new Dexie(IDB_EVENTS_DB_NAME) as Dexie & {
 
 // Schema declaration:
 db.version(1).stores({
-  outdoorEventLocations: "++id, data, cancels, createdAt, updatedAt", // primary key "id" (for the runtime!)
+  outdoorEventLocations: "++id, data, createdAt, updatedAt", // primary key "id" (for the runtime!)
 });
 
 const createOutdoorEventLocationStore = async (event: OutdoorEvent) => {
   const template = {
     data: event,
-    cancels: [],
     createdAt: new Date(),
     updatedAt: new Date(),
   };
@@ -48,11 +46,9 @@ const getOutdoorEventLocationStore = async (id: number) => {
 const updateOutdoorEventLocationStore = async (
   id: number,
   data?: OutdoorEvent,
-  cancels?: Date[],
 ) => {
   const res = await db.outdoorEventLocations.update(id, {
     data,
-    cancels,
     updatedAt: new Date(),
   });
   return res;

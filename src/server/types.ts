@@ -25,4 +25,5 @@ export interface OutdoorEvent {
   location: OutdoorLocation;
   dayOfWeek: DayOfWeek;
   timeOfDay: TimeOfDay;
+  cancels: number[];
 }

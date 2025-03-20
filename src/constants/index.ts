@@ -58,6 +58,7 @@ export const BLANK_OUTDOOR_EVENT: OutdoorEvent = {
   },
   dayOfWeek: "" as DayOfWeek,
   timeOfDay: "" as TimeOfDay,
+  cancels: [],
 };
 
 export const DEFAULT_OUTDOOR_EVENT: OutdoorEvent = {
@@ -87,4 +88,5 @@ export const DEFAULT_OUTDOOR_EVENT: OutdoorEvent = {
   },
   dayOfWeek: "Saturday",
   timeOfDay: "Morning",
+  cancels: [],
 };

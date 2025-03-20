@@ -9,5 +9,5 @@
 - [x] Display basic event weather data
 - [x] Display chart weather data
 - [x] Add carousel
-- [ ] Update cancel event
+- [x] Update cancel event
 - [ ] Tests

@@ -7,6 +7,7 @@ import {
   formatDatetimeEpoch,
   formatDateToISOString,
   getNextDayOfWeek,
+  handleNewOrUpdatedOutdoorEventStore,
 } from "~/lib/utils";
 import { OutdoorEvent } from "~/server/types";
 import SvgIcon from "./svg/icon";
@@ -16,6 +17,11 @@ import { CurrentConditions } from "~/server/visual-crossing";
 import Chart from "./chart";
 import { useIntersectionObserver } from "~/hooks/use-intersection-observer";
 import weatherMock from "~/mocks/weather.json" assert { type: "json" };
+import { Button } from "./ui/button";
+import {
+  getAllOutdoorEventLocationStore,
+  updateOutdoorEventLocationStore,
+} from "~/persister/events";
 
 export default function WeatherData({
   outdoorEvent,
@@ -97,14 +103,54 @@ export default function WeatherData({
   }
 
   const conditions = data?.[0]?.currentConditions as CurrentConditions;
+  const eventDate = conditions.datetimeEpoch;
+
+  const handleEventCancel = (cancel: boolean) => {
+    getAllOutdoorEventLocationStore().then((events) => {
+      const eventId = events?.[0]?.id;
+      if (eventId) {
+        const buildEvent = {
+          ...outdoorEvent,
+          cancels: cancel
+            ? Array.from(new Set([...outdoorEvent.cancels, eventDate]))
+            : outdoorEvent.cancels?.filter((d) => d !== eventDate),
+        };
+        updateOutdoorEventLocationStore(eventId, buildEvent).then(() => {
+          handleNewOrUpdatedOutdoorEventStore(
+            buildEvent,
+            setOutdoorEvent,
+            eventId,
+          );
+        });
+      }
+    });
+  };
 
   return (
     <div
       ref={ref}
       className={cn(
-        "my-4 flex w-full flex-col items-center justify-center gap-4 rounded-none px-0 shadow-none md:rounded-2xl md:border md:border-neutral-50 md:px-8 md:pb-12 md:pt-8 md:shadow-lg",
+        "relative my-4 flex w-full flex-col items-center justify-center gap-4 rounded-none px-0 shadow-none md:rounded-2xl md:border md:border-neutral-50 md:px-8 md:pb-12 md:pt-8 md:shadow-lg",
       )}
     >
+      {offsetWeek >= 0 && !outdoorEvent.cancels?.includes(eventDate) && (
+        <Button
+          variant="destructive"
+          className="-mb-5 h-auto rounded-full px-2 py-0.5 text-xs font-bold md:absolute md:right-3 md:top-3 md:m-0"
+          onClick={() => handleEventCancel(true)}
+        >
+          Cancel
+        </Button>
+      )}
+      {offsetWeek >= 0 && outdoorEvent.cancels?.includes(eventDate) && (
+        <Button
+          variant="destructive"
+          className="-mb-5 h-auto rounded-full bg-green-600 px-2 py-0.5 text-xs font-bold hover:bg-green-500 md:absolute md:right-3 md:top-3 md:m-0"
+          onClick={() => handleEventCancel(false)}
+        >
+          Revive
+        </Button>
+      )}
       <div
         className={cn(
           offsetWeek < 0 ? "opacity-40" : "",
@@ -117,15 +163,19 @@ export default function WeatherData({
             "hidden h-7 w-7 md:block",
           )}
         />
-        <h2 className="rounded-md px-10 py-2 text-center text-lg md:px-4">
+        <h2
+          className={cn(
+            offsetWeek >= 0 && outdoorEvent.cancels?.includes(eventDate)
+              ? "line-through"
+              : "",
+            "rounded-md px-10 py-2 text-center text-lg md:px-4",
+          )}
+        >
           {formatDatetimeEpoch(conditions.datetimeEpoch, data?.[0]?.timezone)}
         </h2>
       </div>
       <div className="flex w-full items-start justify-center gap-4">
-        <SvgIcon
-          icon={conditions?.icon}
-          className="h-16 w-16 md:h-24 md:w-24 lg:h-32 lg:w-32"
-        />
+        <SvgIcon icon={conditions?.icon} className="h-16 w-16 shrink" />
         <div className="flex grow flex-col gap-2">
           <div className="flex items-center justify-between gap-2 rounded-md bg-neutral-100 px-4 py-2 text-2xl">
             <span className="text-base">{conditions.conditions}</span>
