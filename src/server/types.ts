@@ -17,6 +17,7 @@ export type TimeOfDay = "Morning" | "Afternoon" | "Evening" | "Night";
 
 export interface OutdoorLocation {
   search: string;
+  timezone: string;
   components: LocationComponents;
   formatted: string;
 }

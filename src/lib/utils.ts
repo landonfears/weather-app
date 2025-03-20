@@ -36,6 +36,7 @@ export const resultToOutdoorLocation = (
     search,
     components: result.components,
     formatted: result.formatted,
+    timezone: result.annotations.timezone.name,
   };
 };
 
@@ -56,6 +57,7 @@ export function getNextDayOfWeek(
   offset: number = 0,
   timeZone: string = "America/New_York",
 ): Date[] {
+  console.log("timzeone5.5", timeZone);
   const now = new Date();
   const dayIndex = DAYS_OF_WEEK.indexOf(dayOfWeek);
   const timeRange = TIMES_OF_DAY.find(
@@ -101,14 +103,30 @@ export function getNextDayOfWeek(
   return resultDates;
 }
 
-export function formatDatetimeEpoch(datetimeEpoch: number): string {
+export function formatDatetimeEpoch(
+  datetimeEpoch: number,
+  timezone: string = "America/New_York",
+): string {
   const date = new Date(datetimeEpoch * 1000); // Convert from seconds to milliseconds
   const options: Intl.DateTimeFormatOptions = {
-    timeZone: "America/New_York",
+    timeZone: timezone,
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   };
   return date.toLocaleDateString("en-US", options);
+}
+
+export function datetimeEpochToHour(
+  datetimeEpoch: number,
+  timezone: string = "America/New_York",
+): string {
+  const date = new Date(datetimeEpoch * 1000); // Convert from seconds to milliseconds
+  const options: Intl.DateTimeFormatOptions = {
+    timeZone: timezone,
+    hour: "numeric",
+    hour12: true,
+  };
+  return date.toLocaleTimeString("en-US", options);
 }

@@ -2,8 +2,12 @@
 
 ## To do
 
-- [ ] Test weather API
+- [x] Test weather API
 - [x] Create data model
-- [x] Add event
-- [ ] Display event weather data
+- [x] Add
 - [x] Update event
+- [x] Display basic event weather data
+- [x] Display chart weather data
+- [ ] Add carousel
+- [ ] Update cancel event
+- [ ] Tests

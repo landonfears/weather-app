@@ -29,6 +29,7 @@ export function LocationSearch({
     },
     enabled: !!readySearch,
   });
+  console.log("geocode d", data);
 
   return (
     <div className="relative w-full md:static">

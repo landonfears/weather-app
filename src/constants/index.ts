@@ -54,6 +54,7 @@ export const BLANK_OUTDOOR_EVENT: OutdoorEvent = {
     },
     formatted: "",
     search: "",
+    timezone: "",
   },
   dayOfWeek: "Sunday",
   timeOfDay: "Morning",
@@ -82,6 +83,7 @@ export const DEFAULT_OUTDOOR_EVENT: OutdoorEvent = {
     formatted:
       "Morningside Park, City of New York, New York, United States of America",
     search: "morningside park",
+    timezone: "America/New_York",
   },
   dayOfWeek: "Saturday",
   timeOfDay: "Morning",
