@@ -20,12 +20,12 @@ export default function Dashboard() {
     getAllOutdoorEventLocationStore().then((events) => {
       const eventId = events?.[0]?.id;
       if (!eventId) {
-        createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
-          .then((outdoorEventLocation) =>
+        createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT)
+          .then((outdoorEventStore) =>
             handleNewOrUpdatedOutdoorEventStore(
-              outdoorEventLocation?.[0]!.data,
+              outdoorEventStore?.[0]!.data,
               setOutdoorEvent,
-              outdoorEventLocation?.[0]!.id,
+              outdoorEventStore?.[0]!.id,
             ),
           )
           .catch(console.error);
@@ -33,20 +33,17 @@ export default function Dashboard() {
         getOutdoorEventLocationStore(eventId)
           .then((event) => {
             if (event.length === 0) {
-              createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT.location)
-                .then((outdoorEventLocation) =>
+              createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT)
+                .then((outdoorEventStore) =>
                   handleNewOrUpdatedOutdoorEventStore(
-                    outdoorEventLocation?.[0]!.data,
+                    outdoorEventStore?.[0]!.data,
                     setOutdoorEvent,
-                    outdoorEventLocation?.[0]!.id,
+                    outdoorEventStore?.[0]!.id,
                   ),
                 )
                 .catch(console.error);
             } else {
-              setOutdoorEvent((prevOutdoorEvent) => ({
-                ...prevOutdoorEvent,
-                location: event[0]!.data as OutdoorLocation,
-              }));
+              setOutdoorEvent(event[0]!.data);
             }
           })
           .catch(console.error);

@@ -32,9 +32,13 @@ export default function OptionsPanel({
             const eventId = events?.[0]?.id;
 
             if (eventId) {
-              updateOutdoorEventLocationStore(eventId, value).then(() => {
+              const buildEvent = {
+                ...outdoorEvent,
+                location: value,
+              };
+              updateOutdoorEventLocationStore(eventId, buildEvent).then(() => {
                 handleNewOrUpdatedOutdoorEventStore(
-                  value,
+                  buildEvent,
                   setOutdoorEvent,
                   eventId,
                 );
@@ -48,18 +52,54 @@ export default function OptionsPanel({
           items={DAYS_OF_WEEK}
           placeholder="Select a day"
           value={outdoorEvent?.dayOfWeek}
-          onSelect={(value: string) =>
-            setOutdoorEvent({ ...outdoorEvent, dayOfWeek: value as DayOfWeek })
-          }
+          onSelect={(value: string) => {
+            getAllOutdoorEventLocationStore().then((events) => {
+              const eventId = events?.[0]?.id;
+
+              if (eventId) {
+                const buildEvent = {
+                  ...outdoorEvent,
+                  dayOfWeek: value as DayOfWeek,
+                };
+                updateOutdoorEventLocationStore(eventId, buildEvent).then(
+                  () => {
+                    handleNewOrUpdatedOutdoorEventStore(
+                      buildEvent,
+                      setOutdoorEvent,
+                      eventId,
+                    );
+                  },
+                );
+              }
+            });
+          }}
           triggerClassName="w-full text-base font-black"
         />
         <DropdownMenu
           items={TIMES_OF_DAY.map((tod) => tod.name)}
           placeholder="Select time of day"
           value={outdoorEvent?.timeOfDay}
-          onSelect={(value: string) =>
-            setOutdoorEvent({ ...outdoorEvent, timeOfDay: value as TimeOfDay })
-          }
+          onSelect={(value: string) => {
+            getAllOutdoorEventLocationStore().then((events) => {
+              const eventId = events?.[0]?.id;
+
+              if (eventId) {
+                const buildEvent = {
+                  ...outdoorEvent,
+                  timeOfDay: value as TimeOfDay,
+                };
+                updateOutdoorEventLocationStore(eventId, buildEvent).then(
+                  () => {
+                    handleNewOrUpdatedOutdoorEventStore(
+                      buildEvent,
+                      setOutdoorEvent,
+                      eventId,
+                    );
+                  },
+                );
+              }
+            });
+          }}
           triggerClassName="w-full text-base font-black"
         />
       </div>

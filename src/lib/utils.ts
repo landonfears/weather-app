@@ -41,14 +41,11 @@ export const resultToOutdoorLocation = (
 };
 
 export const handleNewOrUpdatedOutdoorEventStore = (
-  outdoorEventLocation: OutdoorLocation,
+  outdoorEventStore: OutdoorEvent,
   setOutdoorEvent: Dispatch<SetStateAction<OutdoorEvent>>,
   eventId: number | string,
 ) => {
-  setOutdoorEvent((prevOutdoorEvent) => ({
-    ...prevOutdoorEvent,
-    location: outdoorEventLocation,
-  }));
+  setOutdoorEvent(outdoorEventStore);
 };
 
 export function getNextDayOfWeek(
@@ -57,7 +54,6 @@ export function getNextDayOfWeek(
   offset: number = 0,
   timeZone: string = "America/New_York",
 ): Date[] {
-  console.log("timzeone5.5", timeZone);
   const now = new Date();
   const dayIndex = DAYS_OF_WEEK.indexOf(dayOfWeek);
   const timeRange = TIMES_OF_DAY.find(

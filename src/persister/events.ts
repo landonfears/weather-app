@@ -1,10 +1,10 @@
 import Dexie, { type EntityTable } from "dexie";
 import { IDB_EVENTS_DB_NAME } from "~/constants";
-import { OutdoorLocation } from "~/server/types";
+import { OutdoorEvent, OutdoorLocation } from "~/server/types";
 
 interface OutdoorEventLocationStore {
   id: number;
-  data: OutdoorLocation;
+  data: OutdoorEvent;
   cancels: Date[];
   createdAt: Date;
   updatedAt: Date;
@@ -19,7 +19,7 @@ db.version(1).stores({
   outdoorEventLocations: "++id, data, cancels, createdAt, updatedAt", // primary key "id" (for the runtime!)
 });
 
-const createOutdoorEventLocationStore = async (event: OutdoorLocation) => {
+const createOutdoorEventLocationStore = async (event: OutdoorEvent) => {
   const template = {
     data: event,
     cancels: [],
@@ -47,7 +47,7 @@ const getOutdoorEventLocationStore = async (id: number) => {
 
 const updateOutdoorEventLocationStore = async (
   id: number,
-  data?: OutdoorLocation,
+  data?: OutdoorEvent,
   cancels?: Date[],
 ) => {
   const res = await db.outdoorEventLocations.update(id, {
