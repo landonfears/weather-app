@@ -15,7 +15,6 @@ export function LocationSearch({
   onSelect: (value: OutdoorLocation) => void;
 }) {
   const [search, setSearch] = useState<string>(formatLocation(currentLocation));
-
   useEffect(() => {
     setSearch(formatLocation(currentLocation));
   }, [currentLocation]);

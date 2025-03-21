@@ -1,6 +1,6 @@
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
-// import { nanoid } from "nanoid";
+import { nanoid } from "nanoid";
 import { createIDBPersister } from "~/persister/indexed-db";
 
 const queryClient = new QueryClient({
@@ -19,7 +19,7 @@ export default function WeatherQueryClientProvider({
       client={queryClient}
       persistOptions={{
         persister,
-        // buster: nanoid(),
+        buster: nanoid(),
       }}
     >
       {children}

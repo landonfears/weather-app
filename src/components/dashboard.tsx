@@ -1,6 +1,6 @@
 "use client";
 
-import type { OutdoorEvent, OutdoorLocation } from "~/server/types";
+import type { OutdoorEvent } from "~/server/types";
 import OptionsPanel from "./options-panel";
 import { BLANK_OUTDOOR_EVENT, DEFAULT_OUTDOOR_EVENT } from "~/constants";
 import { useEffect, useState } from "react";

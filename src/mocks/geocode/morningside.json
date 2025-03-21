@@ -1,0 +1,1147 @@
+{
+  "documentation": "https://opencagedata.com/api",
+  "licenses": [
+    {
+      "name": "see attribution guide",
+      "url": "https://opencagedata.com/credits"
+    }
+  ],
+  "rate": {
+    "limit": 2500,
+    "remaining": 2425,
+    "reset": 1742515200
+  },
+  "results": [
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "40° 48' 21.67488'' N",
+          "lng": "73° 57' 31.33728'' W"
+        },
+        "FIPS": {
+          "county": "36061",
+          "state": "36"
+        },
+        "MGRS": "18TWL8783117745",
+        "Maidenhead": "FN30at43wk",
+        "Mercator": {
+          "x": -8233045.358,
+          "y": 4955842.178
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?way=39243853#map=17/40.80602/-73.95870",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/40.80602/-73.95870&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=40.80602&mlon=-73.95870#map=17/40.80602/-73.95870"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "NORTHERN_AMERICA": "021",
+            "US": "840",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["US$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "US$",
+          "html_entity": "$",
+          "iso_code": "USD",
+          "iso_numeric": "840",
+          "name": "United States Dollar",
+          "smallest_denomination": 1,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇺🇸",
+        "geohash": "dr72jh8bm38eusjbctkd",
+        "qibla": 58.51,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "mph"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742468340,
+            "astronomical": 1742462880,
+            "civil": 1742466720,
+            "nautical": 1742464800
+          },
+          "set": {
+            "apparent": 1742512080,
+            "astronomical": 1742431140,
+            "civil": 1742513700,
+            "nautical": 1742429220
+          }
+        },
+        "timezone": {
+          "name": "America/New_York",
+          "now_in_dst": 1,
+          "offset_sec": -14400,
+          "offset_string": "-0400",
+          "short_name": "EDT"
+        },
+        "what3words": {
+          "words": "stews.coach.wink"
+        },
+        "wikidata": "Q6913001"
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 40.8107269,
+          "lng": -73.955257
+        },
+        "southwest": {
+          "lat": 40.8013795,
+          "lng": -73.9608619
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "US",
+        "ISO_3166-1_alpha-3": "USA",
+        "ISO_3166-2": ["US-NY"],
+        "_category": "outdoors/recreation",
+        "_normalized_city": "City of New York",
+        "_type": "park",
+        "borough": "Manhattan",
+        "city": "City of New York",
+        "continent": "North America",
+        "country": "United States",
+        "country_code": "us",
+        "county": "New York County",
+        "neighbourhood": "Morningside Heights",
+        "park": "Morningside Park",
+        "state": "New York",
+        "state_code": "NY"
+      },
+      "confidence": 9,
+      "formatted": "Morningside Park, City of New York, New York, United States of America",
+      "geometry": {
+        "lat": 40.8060208,
+        "lng": -73.9587048
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "43° 46' 28.32204'' N",
+          "lng": "79° 12' 2.57292'' W"
+        },
+        "MGRS": "17TPJ4480248404",
+        "Maidenhead": "FN03js55vv",
+        "Mercator": {
+          "x": -8816583.232,
+          "y": 5401046.012
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?relation=18677541#map=17/43.77453/-79.20071",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/43.77453/-79.20071&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=43.77453&mlon=-79.20071#map=17/43.77453/-79.20071"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "CA": "124",
+            "NORTHERN_AMERICA": "021",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["C$", "CAD$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "C$",
+          "html_entity": "$",
+          "iso_code": "CAD",
+          "iso_numeric": "124",
+          "name": "Canadian Dollar",
+          "smallest_denomination": 5,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇨🇦",
+        "geohash": "dpz9j8zv1sdcbp0buvr2",
+        "qibla": 54.71,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "km/h"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742469600,
+            "astronomical": 1742463840,
+            "civil": 1742467860,
+            "nautical": 1742465880
+          },
+          "set": {
+            "apparent": 1742513340,
+            "astronomical": 1742432760,
+            "civil": 1742515020,
+            "nautical": 1742430660
+          }
+        },
+        "timezone": {
+          "name": "America/Toronto",
+          "now_in_dst": 1,
+          "offset_sec": -14400,
+          "offset_string": "-0400",
+          "short_name": "EDT"
+        },
+        "what3words": {
+          "words": "when.rewarded.reply"
+        },
+        "wikidata": "Q12988204"
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 43.7894779,
+          "lng": -79.1903382
+        },
+        "southwest": {
+          "lat": 43.7646962,
+          "lng": -79.2335083
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "CA",
+        "ISO_3166-1_alpha-3": "CAN",
+        "ISO_3166-2": ["CA-ON"],
+        "_category": "outdoors/recreation",
+        "_normalized_city": "Toronto",
+        "_type": "park",
+        "city": "Toronto",
+        "continent": "North America",
+        "country": "Canada",
+        "country_code": "ca",
+        "house_number": "390",
+        "park": "Morningside Park",
+        "state": "Ontario",
+        "state_code": "ON",
+        "state_district": "Golden Horseshoe",
+        "suburb": "Scarborough"
+      },
+      "confidence": 7,
+      "formatted": "Morningside Park, 390, Toronto, Ontario, Canada",
+      "geometry": {
+        "lat": 43.7745339,
+        "lng": -79.2007147
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "28° 26' 34.98936'' N",
+          "lng": "81° 24' 24.93828'' W"
+        },
+        "FIPS": {
+          "county": "12095",
+          "state": "12"
+        },
+        "MGRS": "17RMM6015446350",
+        "Maidenhead": "EL98hk16eh",
+        "Mercator": {
+          "x": -9062177.695,
+          "y": 3284601.734
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?relation=1177477#map=17/28.44305/-81.40693",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/28.44305/-81.40693&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=28.44305&mlon=-81.40693#map=17/28.44305/-81.40693"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "NORTHERN_AMERICA": "021",
+            "US": "840",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["US$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "US$",
+          "html_entity": "$",
+          "iso_code": "USD",
+          "iso_numeric": "840",
+          "name": "United States Dollar",
+          "smallest_denomination": 1,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇺🇸",
+        "geohash": "djn1g9ckc173vnejeccb",
+        "qibla": 55.31,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "mph"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742470200,
+            "astronomical": 1742465520,
+            "civil": 1742468760,
+            "nautical": 1742467140
+          },
+          "set": {
+            "apparent": 1742513760,
+            "astronomical": 1742432100,
+            "civil": 1742428800,
+            "nautical": 1742430420
+          }
+        },
+        "timezone": {
+          "name": "America/New_York",
+          "now_in_dst": 1,
+          "offset_sec": -14400,
+          "offset_string": "-0400",
+          "short_name": "EDT"
+        },
+        "what3words": {
+          "words": "farming.margin.thriller"
+        }
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 28.445081,
+          "lng": -81.4042194
+        },
+        "southwest": {
+          "lat": 28.4395715,
+          "lng": -81.4109407
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "US",
+        "ISO_3166-1_alpha-3": "USA",
+        "ISO_3166-2": ["US-FL"],
+        "_category": "place",
+        "_normalized_city": "Sky Lake",
+        "_type": "neighbourhood",
+        "continent": "North America",
+        "country": "United States",
+        "country_code": "us",
+        "county": "Orange County",
+        "neighbourhood": "Morningside Park",
+        "state": "Florida",
+        "state_code": "FL",
+        "town": "Sky Lake"
+      },
+      "confidence": 9,
+      "formatted": "Sky Lake, Florida, United States of America",
+      "geometry": {
+        "lat": 28.4430526,
+        "lng": -81.4069273
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "35° 8' 18.32316'' N",
+          "lng": "89° 58' 55.32240'' W"
+        },
+        "FIPS": {
+          "county": "47157",
+          "state": "47"
+        },
+        "MGRS": "16SBD2830192465",
+        "Maidenhead": "EM55ad23df",
+        "Mercator": {
+          "x": -10016754.205,
+          "y": 4158115.241
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?node=153509636#map=17/35.13842/-89.98203",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/35.13842/-89.98203&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=35.13842&mlon=-89.98203#map=17/35.13842/-89.98203"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "NORTHERN_AMERICA": "021",
+            "US": "840",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["US$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "US$",
+          "html_entity": "$",
+          "iso_code": "USD",
+          "iso_numeric": "840",
+          "name": "United States Dollar",
+          "smallest_denomination": 1,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇺🇸",
+        "geohash": "dn0pbkv04su6mky8uuzw",
+        "qibla": 48.1,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "mph"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742472240,
+            "astronomical": 1742467140,
+            "civil": 1742470740,
+            "nautical": 1742468940
+          },
+          "set": {
+            "apparent": 1742429460,
+            "astronomical": 1742434560,
+            "civil": 1742430960,
+            "nautical": 1742432760
+          }
+        },
+        "timezone": {
+          "name": "America/Chicago",
+          "now_in_dst": 1,
+          "offset_sec": -18000,
+          "offset_string": "-0500",
+          "short_name": "CDT"
+        },
+        "what3words": {
+          "words": "punchy.storm.rubble"
+        }
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 35.1584231,
+          "lng": -89.962034
+        },
+        "southwest": {
+          "lat": 35.1184231,
+          "lng": -90.002034
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "US",
+        "ISO_3166-1_alpha-3": "USA",
+        "ISO_3166-2": ["US-TN"],
+        "_category": "place",
+        "_normalized_city": "Memphis",
+        "_type": "hamlet",
+        "city": "Memphis",
+        "continent": "North America",
+        "country": "United States",
+        "country_code": "us",
+        "county": "Shelby County",
+        "hamlet": "Morningside Park",
+        "postcode": "38112",
+        "region": "West Tennessee",
+        "state": "Tennessee",
+        "state_code": "TN"
+      },
+      "confidence": 7,
+      "formatted": "Morningside Park, Memphis, TN 38112, United States of America",
+      "geometry": {
+        "lat": 35.1384231,
+        "lng": -89.982034
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "33° 57' 35.04996'' N",
+          "lng": "118° 19' 35.26680'' W"
+        },
+        "FIPS": {
+          "county": "06037",
+          "state": "06"
+        },
+        "MGRS": "11SLT7744258484",
+        "Maidenhead": "DM03ux00ti",
+        "Mercator": {
+          "x": -13172041.609,
+          "y": 3999528.865
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?node=150955122#map=17/33.95974/-118.32646",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/33.95974/-118.32646&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=33.95974&mlon=-118.32646#map=17/33.95974/-118.32646"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "NORTHERN_AMERICA": "021",
+            "US": "840",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["US$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "US$",
+          "html_entity": "$",
+          "iso_code": "USD",
+          "iso_numeric": "840",
+          "name": "United States Dollar",
+          "smallest_denomination": 1,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇺🇸",
+        "geohash": "9q5c5qjmc9dk9d4rt8u1",
+        "qibla": 23.8,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "mph"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742479020,
+            "astronomical": 1742474040,
+            "civil": 1742477520,
+            "nautical": 1742475780
+          },
+          "set": {
+            "apparent": 1742436300,
+            "astronomical": 1742441280,
+            "civil": 1742437740,
+            "nautical": 1742439540
+          }
+        },
+        "timezone": {
+          "name": "America/Los_Angeles",
+          "now_in_dst": 1,
+          "offset_sec": -25200,
+          "offset_string": "-0700",
+          "short_name": "PDT"
+        },
+        "what3words": {
+          "words": "useful.breath.commented"
+        }
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 33.9697361,
+          "lng": -118.316463
+        },
+        "southwest": {
+          "lat": 33.9497361,
+          "lng": -118.336463
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "US",
+        "ISO_3166-1_alpha-3": "USA",
+        "ISO_3166-2": ["US-CA"],
+        "_category": "place",
+        "_normalized_city": "Inglewood",
+        "_type": "neighbourhood",
+        "city": "Inglewood",
+        "continent": "North America",
+        "country": "United States",
+        "country_code": "us",
+        "county": "Los Angeles County",
+        "postcode": "90305",
+        "quarter": "Morningside Park",
+        "state": "California",
+        "state_code": "CA"
+      },
+      "confidence": 7,
+      "formatted": "Inglewood, CA 90305, United States of America",
+      "geometry": {
+        "lat": 33.9597361,
+        "lng": -118.326463
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "41° 20' 53.35368'' N",
+          "lng": "72° 7' 38.27712'' W"
+        },
+        "FIPS": {
+          "state": "09"
+        },
+        "MGRS": "18TYL4033581388",
+        "Maidenhead": "FN31wi43rn",
+        "Mercator": {
+          "x": -8029174.219,
+          "y": 5035595.69
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?node=158861930#map=17/41.34815/-72.12730",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/41.34815/-72.12730&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=41.34815&mlon=-72.12730#map=17/41.34815/-72.12730"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "NORTHERN_AMERICA": "021",
+            "US": "840",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["US$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "US$",
+          "html_entity": "$",
+          "iso_code": "USD",
+          "iso_numeric": "840",
+          "name": "United States Dollar",
+          "smallest_denomination": 1,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇺🇸",
+        "geohash": "drkenxnw2ne8uk7zw78h",
+        "qibla": 59.72,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "mph"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742467920,
+            "astronomical": 1742462400,
+            "civil": 1742466300,
+            "nautical": 1742464320
+          },
+          "set": {
+            "apparent": 1742511600,
+            "astronomical": 1742430780,
+            "civil": 1742513280,
+            "nautical": 1742428800
+          }
+        },
+        "timezone": {
+          "name": "America/New_York",
+          "now_in_dst": 1,
+          "offset_sec": -14400,
+          "offset_string": "-0400",
+          "short_name": "EDT"
+        },
+        "what3words": {
+          "words": "notebook.pills.discarding"
+        }
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 41.3681538,
+          "lng": -72.1072992
+        },
+        "southwest": {
+          "lat": 41.3281538,
+          "lng": -72.1472992
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "US",
+        "ISO_3166-1_alpha-3": "USA",
+        "ISO_3166-2": ["US-CT"],
+        "_category": "place",
+        "_normalized_city": "Waterford",
+        "_type": "hamlet",
+        "continent": "North America",
+        "country": "United States",
+        "country_code": "us",
+        "county": "Southeastern Connecticut Planning Region",
+        "hamlet": "Morningside Park",
+        "postcode": "06385",
+        "state": "Connecticut",
+        "state_code": "CT",
+        "town": "Waterford"
+      },
+      "confidence": 7,
+      "formatted": "Morningside Park, Waterford, CT 06385, United States of America",
+      "geometry": {
+        "lat": 41.3481538,
+        "lng": -72.1272992
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "38° 35' 7.25496'' N",
+          "lng": "90° 17' 11.68116'' W"
+        },
+        "FIPS": {
+          "county": "29510",
+          "state": "29"
+        },
+        "MGRS": "15SYC3634474255",
+        "Maidenhead": "EM48uo50ol",
+        "Mercator": {
+          "x": -10050655.901,
+          "y": 4635796.343
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?way=631097353#map=17/38.58535/-90.28658",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/38.58535/-90.28658&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=38.58535&mlon=-90.28658#map=17/38.58535/-90.28658"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "NORTHERN_AMERICA": "021",
+            "US": "840",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["US$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "US$",
+          "html_entity": "$",
+          "iso_code": "USD",
+          "iso_numeric": "840",
+          "name": "United States Dollar",
+          "smallest_denomination": 1,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇺🇸",
+        "geohash": "9yzg92prfnrcgvqtjj3t",
+        "qibla": 47.19,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "mph"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742472300,
+            "astronomical": 1742466960,
+            "civil": 1742470680,
+            "nautical": 1742468820
+          },
+          "set": {
+            "apparent": 1742429580,
+            "astronomical": 1742434920,
+            "civil": 1742431140,
+            "nautical": 1742433000
+          }
+        },
+        "timezone": {
+          "name": "America/Chicago",
+          "now_in_dst": 1,
+          "offset_sec": -18000,
+          "offset_string": "-0500",
+          "short_name": "CDT"
+        },
+        "what3words": {
+          "words": "ended.thinks.caves"
+        }
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 38.5864,
+          "lng": -90.2847242
+        },
+        "southwest": {
+          "lat": 38.5843013,
+          "lng": -90.2886831
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "US",
+        "ISO_3166-1_alpha-3": "USA",
+        "ISO_3166-2": ["US-MO"],
+        "_category": "place",
+        "_normalized_city": "Saint Louis",
+        "_type": "neighbourhood",
+        "city": "Saint Louis",
+        "continent": "North America",
+        "country": "United States",
+        "country_code": "us",
+        "residential": "Morningside Park",
+        "state": "Missouri",
+        "state_code": "MO"
+      },
+      "confidence": 9,
+      "formatted": "Saint Louis, Missouri, United States of America",
+      "geometry": {
+        "lat": 38.5853486,
+        "lng": -90.2865781
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "49° 2' 48.67908'' N",
+          "lng": "122° 19' 12.94932'' W"
+        },
+        "MGRS": "10UEV4967032887",
+        "Maidenhead": "CN89ub11nf",
+        "Mercator": {
+          "x": -13616629.469,
+          "y": 6250527.114
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?way=447538962#map=17/49.04686/-122.32026",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/49.04686/-122.32026&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=49.04686&mlon=-122.32026#map=17/49.04686/-122.32026"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "CA": "124",
+            "NORTHERN_AMERICA": "021",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["C$", "CAD$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "C$",
+          "html_entity": "$",
+          "iso_code": "CAD",
+          "iso_numeric": "124",
+          "name": "Canadian Dollar",
+          "smallest_denomination": 5,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇨🇦",
+        "geohash": "c29p089nek2xuun296j0",
+        "qibla": 17.44,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "km/h"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742479860,
+            "astronomical": 1742473440,
+            "civil": 1742478000,
+            "nautical": 1742475780
+          },
+          "set": {
+            "apparent": 1742437320,
+            "astronomical": 1742443800,
+            "civil": 1742439240,
+            "nautical": 1742441460
+          }
+        },
+        "timezone": {
+          "name": "America/Vancouver",
+          "now_in_dst": 1,
+          "offset_sec": -25200,
+          "offset_string": "-0700",
+          "short_name": "PDT"
+        },
+        "what3words": {
+          "words": "otters.shaped.actor"
+        }
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 49.0474358,
+          "lng": -122.3195697
+        },
+        "southwest": {
+          "lat": 49.0462747,
+          "lng": -122.3209746
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "CA",
+        "ISO_3166-1_alpha-3": "CAN",
+        "ISO_3166-2": ["CA-BC"],
+        "_category": "building",
+        "_normalized_city": "Abbotsford",
+        "_type": "building",
+        "city": "Abbotsford",
+        "continent": "North America",
+        "country": "Canada",
+        "country_code": "ca",
+        "county": "Fraser Valley Regional District",
+        "house_number": "32615",
+        "partial_postcode": "V2T",
+        "residential": "Morningside Park",
+        "state": "British Columbia",
+        "state_code": "BC"
+      },
+      "confidence": 10,
+      "formatted": "32615, Abbotsford, BC V2T, Canada",
+      "geometry": {
+        "lat": 49.0468553,
+        "lng": -122.3202637
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "35° 58' 7.64112'' N",
+          "lng": "83° 54' 14.95944'' W"
+        },
+        "FIPS": {
+          "county": "47093",
+          "state": "47"
+        },
+        "MGRS": "17SKV3811784386",
+        "Maidenhead": "EM85bx12mm",
+        "Mercator": {
+          "x": -9340167.852,
+          "y": 4271230.09
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?way=277826409#map=17/35.96879/-83.90416",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/35.96879/-83.90416&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=35.96879&mlon=-83.90416#map=17/35.96879/-83.90416"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "NORTHERN_AMERICA": "021",
+            "US": "840",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["US$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "US$",
+          "html_entity": "$",
+          "iso_code": "USD",
+          "iso_numeric": "840",
+          "name": "United States Dollar",
+          "smallest_denomination": 1,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇺🇸",
+        "geohash": "dnkkdeyv7kr1nk09189j",
+        "qibla": 52.26,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "mph"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742470740,
+            "astronomical": 1742465640,
+            "civil": 1742469240,
+            "nautical": 1742467440
+          },
+          "set": {
+            "apparent": 1742514420,
+            "astronomical": 1742433120,
+            "civil": 1742429520,
+            "nautical": 1742431320
+          }
+        },
+        "timezone": {
+          "name": "America/New_York",
+          "now_in_dst": 1,
+          "offset_sec": -14400,
+          "offset_string": "-0400",
+          "short_name": "EDT"
+        },
+        "what3words": {
+          "words": "surely.aura.move"
+        }
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 35.9722922,
+          "lng": -83.8996913
+        },
+        "southwest": {
+          "lat": 35.9652715,
+          "lng": -83.9056691
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "US",
+        "ISO_3166-1_alpha-3": "USA",
+        "ISO_3166-2": ["US-TN"],
+        "_category": "outdoors/recreation",
+        "_normalized_city": "Knoxville",
+        "_type": "park",
+        "city": "Knoxville",
+        "continent": "North America",
+        "country": "United States",
+        "country_code": "us",
+        "county": "Knox County",
+        "park": "Morningside Park",
+        "postcode": "37915",
+        "region": "East Tennessee",
+        "residential": "Morningside Hills",
+        "state": "Tennessee",
+        "state_code": "TN"
+      },
+      "confidence": 9,
+      "formatted": "Morningside Park, Knoxville, TN 37915, United States of America",
+      "geometry": {
+        "lat": 35.9687892,
+        "lng": -83.9041554
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "25° 49' 28.04916'' N",
+          "lng": "80° 10' 47.94924'' W"
+        },
+        "FIPS": {
+          "county": "12086",
+          "state": "12"
+        },
+        "MGRS": "17RNJ8218856500",
+        "Maidenhead": "EL95vt87ju",
+        "Mercator": {
+          "x": -8925595.203,
+          "y": 2958747.883
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?way=295950754#map=17/25.82446/-80.17999",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/25.82446/-80.17999&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=25.82446&mlon=-80.17999#map=17/25.82446/-80.17999"
+        },
+        "UN_M49": {
+          "regions": {
+            "AMERICAS": "019",
+            "NORTHERN_AMERICA": "021",
+            "US": "840",
+            "WORLD": "001"
+          },
+          "statistical_groupings": ["MEDC"]
+        },
+        "callingcode": 1,
+        "currency": {
+          "alternate_symbols": ["US$"],
+          "decimal_mark": ".",
+          "disambiguate_symbol": "US$",
+          "html_entity": "$",
+          "iso_code": "USD",
+          "iso_numeric": "840",
+          "name": "United States Dollar",
+          "smallest_denomination": 1,
+          "subunit": "Cent",
+          "subunit_to_unit": 100,
+          "symbol": "$",
+          "symbol_first": 1,
+          "thousands_separator": ","
+        },
+        "flag": "🇺🇸",
+        "geohash": "dhwfzmnwqgvjr4rbz0b4",
+        "qibla": 56.6,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "mph"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1742469900,
+            "astronomical": 1742465340,
+            "civil": 1742468520,
+            "nautical": 1742466960
+          },
+          "set": {
+            "apparent": 1742513460,
+            "astronomical": 1742431680,
+            "civil": 1742514840,
+            "nautical": 1742430060
+          }
+        },
+        "timezone": {
+          "name": "America/New_York",
+          "now_in_dst": 1,
+          "offset_sec": -14400,
+          "offset_string": "-0400",
+          "short_name": "EDT"
+        },
+        "what3words": {
+          "words": "special.social.remotes"
+        },
+        "wikidata": "Q49528433"
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 25.8271583,
+          "lng": -80.1780426
+        },
+        "southwest": {
+          "lat": 25.8219362,
+          "lng": -80.1820366
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "US",
+        "ISO_3166-1_alpha-3": "USA",
+        "ISO_3166-2": ["US-FL"],
+        "_category": "outdoors/recreation",
+        "_normalized_city": "Miami",
+        "_type": "park",
+        "city": "Miami",
+        "continent": "North America",
+        "country": "United States",
+        "country_code": "us",
+        "county": "Miami-Dade County",
+        "hamlet": "Bayshore",
+        "park": "Morningside Park",
+        "state": "Florida",
+        "state_code": "FL"
+      },
+      "confidence": 9,
+      "formatted": "Morningside Park, Bayshore, Miami, Florida, United States of America",
+      "geometry": {
+        "lat": 25.8244581,
+        "lng": -80.1799859
+      }
+    }
+  ],
+  "status": {
+    "code": 200,
+    "message": "OK"
+  },
+  "stay_informed": {
+    "blog": "https://blog.opencagedata.com",
+    "mastodon": "https://en.osm.town/@opencage"
+  },
+  "thanks": "For using an OpenCage API",
+  "timestamp": {
+    "created_http": "Thu, 20 Mar 2025 21:23:04 GMT",
+    "created_unix": 1742505784
+  },
+  "total_results": 10
+}

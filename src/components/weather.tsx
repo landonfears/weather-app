@@ -3,11 +3,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { findParentWithId } from "~/lib/utils";
 import { OutdoorEvent } from "~/server/types";
-import SvgIcon from "./svg/icon";
-import { Skeleton } from "./ui/skeleton";
-import { CalendarHeart, Umbrella, Wind } from "lucide-react";
-import { CurrentConditions } from "~/server/visual-crossing";
-import Chart from "./chart";
 import {
   Carousel,
   CarouselContent,

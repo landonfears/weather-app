@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import {
   cn,
   datetimeEpochToHour,
@@ -17,7 +17,6 @@ import { CalendarHeart, Umbrella, Wind } from "lucide-react";
 import { CurrentConditions } from "~/server/visual-crossing";
 import Chart from "./chart";
 import { useIntersectionObserver } from "~/hooks/use-intersection-observer";
-import weatherMock from "~/mocks/weather.json" assert { type: "json" };
 import { Button } from "./ui/button";
 import {
   getAllOutdoorEventLocationStore,
@@ -63,10 +62,10 @@ export default function WeatherData({
               outdoorEvent.location.formatted,
             )}&time=${encodeURIComponent(date)}`,
           );
-          return response.json();
+          const data = await response.json();
+          return data;
         }),
       );
-
       return weatherData;
     },
     enabled:
@@ -125,7 +124,7 @@ export default function WeatherData({
       {offsetWeek >= 0 && !outdoorEvent.cancels?.includes(eventDate) && (
         <Button
           variant="destructive"
-          className="-mb-5 h-auto rounded-full px-2 py-0.5 text-xs font-bold md:absolute md:right-3 md:top-3 md:m-0"
+          className="-mb-5 h-auto rounded-full px-2 py-1 text-xs font-bold md:absolute md:right-3 md:top-3 md:m-0"
           onClick={() => handleEventCancel(true)}
         >
           Cancel
@@ -134,7 +133,7 @@ export default function WeatherData({
       {offsetWeek >= 0 && outdoorEvent.cancels?.includes(eventDate) && (
         <Button
           variant="destructive"
-          className="-mb-5 h-auto rounded-full bg-green-600 px-2 py-0.5 text-xs font-bold hover:bg-green-500 md:absolute md:right-3 md:top-3 md:m-0"
+          className="-mb-5 h-auto rounded-full bg-green-600 px-2 py-1 text-xs font-bold hover:bg-green-500 md:absolute md:right-3 md:top-3 md:m-0"
           onClick={() => handleEventCancel(false)}
         >
           Revive
