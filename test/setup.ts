@@ -4,25 +4,37 @@ import { vi } from "vitest";
 import "fake-indexeddb/auto";
 
 class IntersectionObserver {
+  readonly root: Element | null;
+  readonly rootMargin: string;
+  readonly thresholds: ReadonlyArray<number>;
+
   constructor(
     private callback: IntersectionObserverCallback,
     private options?: IntersectionObserverInit,
-  ) {}
+  ) {
+    this.root = null;
+    this.rootMargin = "";
+    this.thresholds = [];
+  }
 
   observe(target: Element) {
     // Simulate the element being visible
     this.callback(
       [{ isIntersecting: true, target }] as IntersectionObserverEntry[],
-      this as any,
+      this,
     );
   }
 
-  unobserve(target: Element) {
+  unobserve() {
     // Mock implementation
   }
 
   disconnect() {
     // Mock implementation
+  }
+
+  takeRecords(): IntersectionObserverEntry[] {
+    return [];
   }
 }
 
@@ -56,13 +68,15 @@ Object.defineProperty(window, "matchMedia", {
 
 // Mock ResizeObserver
 class ResizeObserver {
-  constructor(callback: ResizeObserverCallback) {}
+  constructor() {
+    //
+  }
 
-  observe(target: Element) {
+  observe() {
     // Mock implementation
   }
 
-  unobserve(target: Element) {
+  unobserve() {
     // Mock implementation
   }
 

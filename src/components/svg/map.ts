@@ -24,25 +24,51 @@ export const weatherIcons: Record<
   string,
   React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 > = {
-  "clear-day": ClearDay,
-  "clear-night": ClearNight,
-  cloudy: Cloudy,
-  fog: Fog,
-  hail: Hail,
-  "partly-cloudy-day": PartlyCloudyDay,
-  "partly-cloudy-night": PartlyCloudyNight,
-  "rain-snow-showers-day": RainSnowShowersDay,
-  "rain-snow-showers-night": RainSnowShowersNight,
-  rain: Rain,
-  "showers-day": ShowersDay,
-  "showers-night": ShowersNight,
-  sleet: Sleet,
-  "snow-showers-day": SnowShowersDay,
-  "snow-showers-night": SnowShowersNight,
-  snow: Snow,
-  "thunder-rain": ThunderRain,
-  "thunder-showers-day": ThunderShowersDay,
-  "thunder-showers-night": ThunderShowersNight,
-  thunder: Thunder,
-  wind: Wind,
+  "clear-day": ClearDay as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  "clear-night": ClearNight as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  cloudy: Cloudy as React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
+  fog: Fog as React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
+  hail: Hail as React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
+  "partly-cloudy-day": PartlyCloudyDay as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  "partly-cloudy-night": PartlyCloudyNight as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  "rain-snow-showers-day": RainSnowShowersDay as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  "rain-snow-showers-night": RainSnowShowersNight as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  rain: Rain as React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
+  "showers-day": ShowersDay as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  "showers-night": ShowersNight as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  sleet: Sleet as React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
+  "snow-showers-day": SnowShowersDay as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  "snow-showers-night": SnowShowersNight as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  snow: Snow as React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
+  "thunder-rain": ThunderRain as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  "thunder-showers-day": ThunderShowersDay as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  "thunder-showers-night": ThunderShowersNight as React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >,
+  thunder: Thunder as React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
+  wind: Wind as React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
 };

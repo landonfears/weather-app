@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import {
   cn,
   datetimeEpochToHour,
@@ -10,11 +10,11 @@ import {
   getNextDayOfWeek,
   handleNewOrUpdatedOutdoorEventStore,
 } from "~/lib/utils";
-import { OutdoorEvent } from "~/server/types";
+import type { OutdoorEvent } from "~/server/types";
 import SvgIcon from "./svg/icon";
 import { Skeleton } from "./ui/skeleton";
-import { CalendarHeart, Umbrella, Wind } from "lucide-react";
-import { CurrentConditions } from "~/server/visual-crossing";
+import { CalendarHeart, Umbrella } from "lucide-react";
+import type { VisualCrossingResponse } from "~/server/visual-crossing";
 import Chart from "./chart";
 import { useIntersectionObserver } from "~/hooks/use-intersection-observer";
 import { Button } from "./ui/button";
@@ -62,7 +62,7 @@ export default function WeatherData({
               outdoorEvent.location.formatted,
             )}&time=${encodeURIComponent(date)}`,
           );
-          const data = await response.json();
+          const data = (await response.json()) as VisualCrossingResponse;
           return data;
         }),
       );
@@ -90,7 +90,7 @@ export default function WeatherData({
     );
   }
 
-  const conditions = data?.[0]?.currentConditions as CurrentConditions;
+  const conditions = data?.[0]!.currentConditions;
   if (!conditions) {
     if (offsetWeek !== 0) {
       return null;
@@ -104,24 +104,24 @@ export default function WeatherData({
   const eventDate = conditions.datetimeEpoch;
 
   const handleEventCancel = (cancel: boolean) => {
-    getAllOutdoorEventLocationStore().then((events) => {
-      const eventId = events?.[0]?.id;
-      if (eventId) {
-        const buildEvent = {
-          ...outdoorEvent,
-          cancels: cancel
-            ? Array.from(new Set([...outdoorEvent.cancels, eventDate]))
-            : outdoorEvent.cancels?.filter((d) => d !== eventDate),
-        };
-        updateOutdoorEventLocationStore(eventId, buildEvent).then(() => {
-          handleNewOrUpdatedOutdoorEventStore(
-            buildEvent,
-            setOutdoorEvent,
-            eventId,
-          );
-        });
-      }
-    });
+    getAllOutdoorEventLocationStore()
+      .then((events) => {
+        const eventId = events?.[0]?.id;
+        if (eventId) {
+          const buildEvent = {
+            ...outdoorEvent,
+            cancels: cancel
+              ? Array.from(new Set([...outdoorEvent.cancels, eventDate]))
+              : outdoorEvent.cancels?.filter((d) => d !== eventDate),
+          };
+          updateOutdoorEventLocationStore(eventId, buildEvent)
+            .then(() => {
+              handleNewOrUpdatedOutdoorEventStore(buildEvent, setOutdoorEvent);
+            })
+            .catch(console.error);
+        }
+      })
+      .catch(console.error);
   };
 
   return (

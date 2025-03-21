@@ -1,6 +1,6 @@
 import { waitFor } from "@testing-library/react";
 import Weather from "~/components/weather";
-import { OutdoorEvent } from "~/server/types";
+import type { OutdoorEvent } from "~/server/types";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
@@ -46,7 +46,12 @@ describe("weather", { timeout: 30000 }, () => {
 
     const rendered = renderWithClient(
       testQueryClient,
-      <Weather outdoorEvent={mockOutdoorEvent} setOutdoorEvent={() => {}} />,
+      <Weather
+        outdoorEvent={mockOutdoorEvent}
+        setOutdoorEvent={() => {
+          //
+        }}
+      />,
     );
     const date = formatDatetimeEpoch(
       weatherMock?.[0]!.currentConditions.datetimeEpoch,

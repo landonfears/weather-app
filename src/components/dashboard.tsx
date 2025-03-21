@@ -17,38 +17,38 @@ export default function Dashboard() {
     useState<OutdoorEvent>(BLANK_OUTDOOR_EVENT);
 
   useEffect(() => {
-    getAllOutdoorEventLocationStore().then((events) => {
-      const eventId = events?.[0]?.id;
-      if (!eventId) {
-        createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT)
-          .then((outdoorEventStore) =>
-            handleNewOrUpdatedOutdoorEventStore(
-              outdoorEventStore?.[0]!.data,
-              setOutdoorEvent,
-              outdoorEventStore?.[0]!.id,
-            ),
-          )
-          .catch(console.error);
-      } else {
-        getOutdoorEventLocationStore(eventId)
-          .then((event) => {
-            if (event.length === 0) {
-              createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT)
-                .then((outdoorEventStore) =>
-                  handleNewOrUpdatedOutdoorEventStore(
-                    outdoorEventStore?.[0]!.data,
-                    setOutdoorEvent,
-                    outdoorEventStore?.[0]!.id,
-                  ),
-                )
-                .catch(console.error);
-            } else {
-              setOutdoorEvent(event[0]!.data);
-            }
-          })
-          .catch(console.error);
-      }
-    });
+    getAllOutdoorEventLocationStore()
+      .then((events) => {
+        const eventId = events?.[0]?.id;
+        if (!eventId) {
+          createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT)
+            .then((outdoorEventStore) =>
+              handleNewOrUpdatedOutdoorEventStore(
+                outdoorEventStore?.[0]!.data,
+                setOutdoorEvent,
+              ),
+            )
+            .catch(console.error);
+        } else {
+          getOutdoorEventLocationStore(eventId)
+            .then((event) => {
+              if (event.length === 0) {
+                createOutdoorEventLocationStore(DEFAULT_OUTDOOR_EVENT)
+                  .then((outdoorEventStore) =>
+                    handleNewOrUpdatedOutdoorEventStore(
+                      outdoorEventStore?.[0]!.data,
+                      setOutdoorEvent,
+                    ),
+                  )
+                  .catch(console.error);
+              } else {
+                setOutdoorEvent(event[0]!.data);
+              }
+            })
+            .catch(console.error);
+        }
+      })
+      .catch(console.error);
   }, []);
 
   return (

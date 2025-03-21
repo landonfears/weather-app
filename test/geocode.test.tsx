@@ -1,5 +1,5 @@
 import { waitFor } from "@testing-library/react";
-import { OutdoorEvent } from "~/server/types";
+import type { OutdoorEvent } from "~/server/types";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
@@ -44,7 +44,9 @@ describe("geocode", { timeout: 30000 }, () => {
       testQueryClient,
       <LocationSearch
         currentLocation={mockOutdoorEvent.location}
-        onSelect={() => {}}
+        onSelect={() => {
+          //
+        }}
       />,
     );
     await waitFor(() => {

@@ -1,8 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { twMerge } from "tailwind-merge";
-import { Result } from "~/server/open-cage";
-import {
+import type { Result } from "~/server/open-cage";
+import type {
   DayOfWeek,
   OutdoorEvent,
   OutdoorLocation,
@@ -43,7 +43,6 @@ export const resultToOutdoorLocation = (
 export const handleNewOrUpdatedOutdoorEventStore = (
   outdoorEventStore: OutdoorEvent,
   setOutdoorEvent: Dispatch<SetStateAction<OutdoorEvent>>,
-  eventId: number | string,
 ) => {
   setOutdoorEvent(outdoorEventStore);
 };
@@ -51,8 +50,8 @@ export const handleNewOrUpdatedOutdoorEventStore = (
 export function getNextDayOfWeek(
   dayOfWeek: DayOfWeek,
   timeOfDay: TimeOfDay,
-  offset: number = 0,
-  timeZone: string = "America/New_York",
+  offset = 0,
+  timeZone = "America/New_York",
 ): Date[] {
   const now = new Date();
   const dayIndex = DAYS_OF_WEEK.indexOf(dayOfWeek);
@@ -101,7 +100,7 @@ export function getNextDayOfWeek(
 
 export function formatDatetimeEpoch(
   datetimeEpoch: number,
-  timezone: string = "America/New_York",
+  timezone = "America/New_York",
 ): string {
   const date = new Date(datetimeEpoch * 1000); // Convert from seconds to milliseconds
   const options: Intl.DateTimeFormatOptions = {
@@ -116,7 +115,7 @@ export function formatDatetimeEpoch(
 
 export function datetimeEpochToHour(
   datetimeEpoch: number,
-  timezone: string = "America/New_York",
+  timezone = "America/New_York",
 ): string {
   const date = new Date(datetimeEpoch * 1000); // Convert from seconds to milliseconds
   const options: Intl.DateTimeFormatOptions = {

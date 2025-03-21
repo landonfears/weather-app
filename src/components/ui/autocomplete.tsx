@@ -87,7 +87,7 @@ export const AutoComplete = ({
   const handleBlur = useCallback(() => {
     setOpen(false);
     setInputValue(selected?.label || inputValue);
-  }, [selected, inputValue]);
+  }, [selected, inputValue, setInputValue]);
 
   useEffect(() => {
     if (isOpen) {
@@ -112,7 +112,7 @@ export const AutoComplete = ({
         inputRef?.current?.blur();
       }, 0);
     },
-    [onValueChange],
+    [onValueChange, setInputValue],
   );
 
   const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {

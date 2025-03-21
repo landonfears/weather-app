@@ -70,5 +70,6 @@
 @layer utilities {
   .dragging {
     -webkit-user-select: none;
+    user-select: none;
   }
 }

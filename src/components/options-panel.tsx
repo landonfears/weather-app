@@ -14,7 +14,7 @@ import {
   updateOutdoorEventLocationStore,
 } from "~/persister/events";
 import { handleNewOrUpdatedOutdoorEventStore } from "~/lib/utils";
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 export default function OptionsPanel({
   outdoorEvent,
@@ -28,23 +28,26 @@ export default function OptionsPanel({
       <LocationSearch
         currentLocation={outdoorEvent?.location}
         onSelect={(value: OutdoorLocation) => {
-          getAllOutdoorEventLocationStore().then((events) => {
-            const eventId = events?.[0]?.id;
+          getAllOutdoorEventLocationStore()
+            .then((events) => {
+              const eventId = events?.[0]?.id;
 
-            if (eventId) {
-              const buildEvent = {
-                ...outdoorEvent,
-                location: value,
-              };
-              updateOutdoorEventLocationStore(eventId, buildEvent).then(() => {
-                handleNewOrUpdatedOutdoorEventStore(
-                  buildEvent,
-                  setOutdoorEvent,
-                  eventId,
-                );
-              });
-            }
-          });
+              if (eventId) {
+                const buildEvent = {
+                  ...outdoorEvent,
+                  location: value,
+                };
+                updateOutdoorEventLocationStore(eventId, buildEvent)
+                  .then(() => {
+                    handleNewOrUpdatedOutdoorEventStore(
+                      buildEvent,
+                      setOutdoorEvent,
+                    );
+                  })
+                  .catch(console.error);
+              }
+            })
+            .catch(console.error);
         }}
       />
       <div className="flex w-full items-start justify-between space-x-4">
@@ -53,25 +56,26 @@ export default function OptionsPanel({
           placeholder=""
           value={outdoorEvent?.dayOfWeek}
           onSelect={(value: string) => {
-            getAllOutdoorEventLocationStore().then((events) => {
-              const eventId = events?.[0]?.id;
+            getAllOutdoorEventLocationStore()
+              .then((events) => {
+                const eventId = events?.[0]?.id;
 
-              if (eventId) {
-                const buildEvent = {
-                  ...outdoorEvent,
-                  dayOfWeek: value as DayOfWeek,
-                };
-                updateOutdoorEventLocationStore(eventId, buildEvent).then(
-                  () => {
-                    handleNewOrUpdatedOutdoorEventStore(
-                      buildEvent,
-                      setOutdoorEvent,
-                      eventId,
-                    );
-                  },
-                );
-              }
-            });
+                if (eventId) {
+                  const buildEvent = {
+                    ...outdoorEvent,
+                    dayOfWeek: value as DayOfWeek,
+                  };
+                  updateOutdoorEventLocationStore(eventId, buildEvent)
+                    .then(() => {
+                      handleNewOrUpdatedOutdoorEventStore(
+                        buildEvent,
+                        setOutdoorEvent,
+                      );
+                    })
+                    .catch(console.error);
+                }
+              })
+              .catch(console.error);
           }}
           triggerClassName="w-full text-base font-black"
         />
@@ -80,25 +84,26 @@ export default function OptionsPanel({
           placeholder=""
           value={outdoorEvent?.timeOfDay}
           onSelect={(value: string) => {
-            getAllOutdoorEventLocationStore().then((events) => {
-              const eventId = events?.[0]?.id;
+            getAllOutdoorEventLocationStore()
+              .then((events) => {
+                const eventId = events?.[0]?.id;
 
-              if (eventId) {
-                const buildEvent = {
-                  ...outdoorEvent,
-                  timeOfDay: value as TimeOfDay,
-                };
-                updateOutdoorEventLocationStore(eventId, buildEvent).then(
-                  () => {
-                    handleNewOrUpdatedOutdoorEventStore(
-                      buildEvent,
-                      setOutdoorEvent,
-                      eventId,
-                    );
-                  },
-                );
-              }
-            });
+                if (eventId) {
+                  const buildEvent = {
+                    ...outdoorEvent,
+                    timeOfDay: value as TimeOfDay,
+                  };
+                  updateOutdoorEventLocationStore(eventId, buildEvent)
+                    .then(() => {
+                      handleNewOrUpdatedOutdoorEventStore(
+                        buildEvent,
+                        setOutdoorEvent,
+                      );
+                    })
+                    .catch(console.error);
+                }
+              })
+              .catch(console.error);
           }}
           triggerClassName="w-full text-base font-black"
         />

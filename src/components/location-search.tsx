@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import type { OpenCageResponse } from "~/server/open-cage";
-import { OutdoorLocation } from "~/server/types";
+import type { OutdoorLocation } from "~/server/types";
 import { formatLocation, resultToOutdoorLocation } from "~/lib/utils";
 import { useDebounce } from "~/hooks/use-debounce";
-import { AutoComplete, Option } from "./ui/autocomplete";
+import { AutoComplete, type Option } from "./ui/autocomplete";
 
 export function LocationSearch({
   currentLocation,
@@ -26,7 +26,7 @@ export function LocationSearch({
       try {
         const response = await fetch(`/api/geocode?query=${readySearch}`);
         return (await response.json()) as OpenCageResponse;
-      } catch (cause) {
+      } catch {
         return null;
       }
     },

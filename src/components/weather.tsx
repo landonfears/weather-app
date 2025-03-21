@@ -1,8 +1,8 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { findParentWithId } from "~/lib/utils";
-import { OutdoorEvent } from "~/server/types";
+import type { OutdoorEvent } from "~/server/types";
 import {
   Carousel,
   CarouselContent,

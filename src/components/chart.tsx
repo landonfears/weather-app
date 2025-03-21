@@ -10,7 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { CurrentConditions } from "~/server/visual-crossing";
+import type { CurrentConditions } from "~/server/visual-crossing";
 import {
   CircleGauge,
   CircleHelp,
@@ -34,9 +34,7 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
-  SelectValue,
 } from "./ui/select";
 
 ChartJS.register(

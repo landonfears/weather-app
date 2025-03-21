@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { DayOfWeek, TimeOfDay } from "~/server/types";
+import type { DayOfWeek, TimeOfDay } from "~/server/types";
 
 export function DropdownMenu({
   items,

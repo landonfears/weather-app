@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { env } from "~/env";
-import { VisualCrossingResponse } from "~/server/visual-crossing";
+import type { VisualCrossingResponse } from "~/server/visual-crossing";
 
 export async function GET(req: NextRequest) {
   try {

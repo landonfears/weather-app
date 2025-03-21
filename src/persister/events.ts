@@ -1,6 +1,6 @@
 import Dexie, { type EntityTable } from "dexie";
 import { IDB_EVENTS_DB_NAME } from "~/constants";
-import { OutdoorEvent, OutdoorLocation } from "~/server/types";
+import type { OutdoorEvent } from "~/server/types";
 
 interface OutdoorEventLocationStore {
   id: number;
