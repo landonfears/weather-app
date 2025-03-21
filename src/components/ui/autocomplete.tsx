@@ -5,7 +5,13 @@ import {
   CommandInput,
 } from "~/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
-import { useState, useRef, useCallback, type KeyboardEvent } from "react";
+import {
+  useState,
+  useRef,
+  useCallback,
+  type KeyboardEvent,
+  useEffect,
+} from "react";
 
 import { Skeleton } from "~/components/ui/skeleton";
 
@@ -82,6 +88,16 @@ export const AutoComplete = ({
     setOpen(false);
     setInputValue(selected?.label || inputValue);
   }, [selected, inputValue]);
+
+  useEffect(() => {
+    if (isOpen) {
+      if (typeof window != "undefined" && window.document) {
+        document.body.style.overflow = "hidden";
+      }
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
 
   const handleSelectOption = useCallback(
     (selectedOption: Option) => {

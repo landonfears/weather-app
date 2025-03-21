@@ -30,7 +30,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-describe.skip("weather", { timeout: 30000 }, () => {
+describe("weather", { timeout: 30000 }, () => {
   it("should display weather event date", async () => {
     const mockOutdoorEvent: OutdoorEvent = {
       location: {
