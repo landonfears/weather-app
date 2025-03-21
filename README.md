@@ -4,7 +4,7 @@ This app will allow you to input a location, a day of the week, and a time of da
 
 ## App URL
 
-The app can be tested at: [https://mogulweather.netlify.app/](https://mogulweather.netlify.app/)
+The app can be tested at: [https://weather-app-mogul-labs.vercel.app/](https://weather-app-mogul-labs.vercel.app/)
 
 ## Quickstart
 
