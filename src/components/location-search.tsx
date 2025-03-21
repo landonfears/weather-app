@@ -23,8 +23,12 @@ export function LocationSearch({
   const { data, isFetching } = useQuery({
     queryKey: ["geocode", readySearch],
     queryFn: async () => {
-      const response = await fetch(`/api/geocode?query=${readySearch}`);
-      return (await response.json()) as OpenCageResponse;
+      try {
+        const response = await fetch(`/api/geocode?query=${readySearch}`);
+        return (await response.json()) as OpenCageResponse;
+      } catch (cause) {
+        return null;
+      }
     },
     enabled: !!readySearch,
   });
@@ -33,7 +37,7 @@ export function LocationSearch({
     <div className="relative w-full md:static">
       <AutoComplete
         options={
-          (data?.results.map((res) => ({
+          (data?.results?.map((res) => ({
             label: formatLocation({
               search: readySearch,
               components: res.components,

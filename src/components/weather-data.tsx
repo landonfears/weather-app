@@ -39,7 +39,7 @@ export default function WeatherData({
     rootMargin: "100px",
   });
 
-  const { data, isFetching, isFetched } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: [
       "weather",
       outdoorEvent.location.formatted,
@@ -91,6 +91,16 @@ export default function WeatherData({
   }
 
   const conditions = data?.[0]?.currentConditions as CurrentConditions;
+  if (!conditions) {
+    if (offsetWeek !== 0) {
+      return null;
+    }
+    return (
+      <div className="flex h-full items-center justify-center">
+        <p>Oops, something went wrong.</p>
+      </div>
+    );
+  }
   const eventDate = conditions.datetimeEpoch;
 
   const handleEventCancel = (cancel: boolean) => {
@@ -124,7 +134,7 @@ export default function WeatherData({
       {offsetWeek >= 0 && !outdoorEvent.cancels?.includes(eventDate) && (
         <Button
           variant="destructive"
-          className="-mb-5 h-auto rounded-full px-2 py-1 text-xs font-bold md:absolute md:right-3 md:top-3 md:m-0"
+          className="absolute top-12 z-10 -mb-5 h-auto rounded-full px-2 py-1 text-xs font-bold md:right-3 md:top-3 md:m-0"
           onClick={() => handleEventCancel(true)}
         >
           Cancel
@@ -133,7 +143,7 @@ export default function WeatherData({
       {offsetWeek >= 0 && outdoorEvent.cancels?.includes(eventDate) && (
         <Button
           variant="destructive"
-          className="-mb-5 h-auto rounded-full bg-green-600 px-2 py-1 text-xs font-bold hover:bg-green-500 md:absolute md:right-3 md:top-3 md:m-0"
+          className="absolute top-12 z-10 -mb-5 h-auto rounded-full bg-green-600 px-2 py-1 text-xs font-bold hover:bg-green-500 md:right-3 md:top-3 md:m-0"
           onClick={() => handleEventCancel(false)}
         >
           Revive
@@ -172,7 +182,7 @@ export default function WeatherData({
             .map((conditions) => (
               <div
                 key={conditions.datetimeEpoch}
-                className="flex flex-col items-center justify-center gap-0.5"
+                className="flex w-20 flex-col items-center justify-center gap-0.5"
               >
                 <h3 className="text-sm font-bold">
                   {datetimeEpochToHour(
